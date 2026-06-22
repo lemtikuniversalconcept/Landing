@@ -12,19 +12,19 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Lemtik - The Operating System for African Security',
   description: 'Africa\'s first civilian-grade C4I platform. AI-powered intelligence, dispatch, and autonomous response cutting emergency response times by over 50%.',
-  generator: 'v0.app',
+  generator: 'Lemtik',
   icons: {
     icon: [
       {
-        url: '/icon-dark-32x32.png',
+        url: '/favicon.ico',
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/icon.svg',
+        url: '/favicon.ico',
         type: 'image/svg+xml',
       },
     ],
-    apple: '/apple-icon.png',
+    apple: '/favicon.ico',
   },
 }
 
