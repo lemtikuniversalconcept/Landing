@@ -71,6 +71,13 @@ const Hero = () => {
           initial="hidden"
           animate="visible"
         >
+          <motion.div
+            variants={itemVariants}
+            className="mb-4"
+          >
+            <span className="text-cyan-400 font-semibold text-lg">Lemtik Security</span>
+          </motion.div>
+
           <motion.h1
             variants={itemVariants}
             className="text-5xl md:text-7xl font-bold text-white mb-6 text-balance"
@@ -80,9 +87,16 @@ const Hero = () => {
 
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-gray-200 mb-8 text-balance max-w-3xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-gray-200 mb-4 text-balance max-w-3xl mx-auto leading-relaxed"
           >
-            Lemtik is building Africa&apos;s first civilian-grade C4I platform — cutting emergency response times by over 50% through AI-powered intelligence, dispatch, and autonomous response.
+            <strong>Lemtik Security</strong> is Africa&apos;s first civilian-grade command and control platform. We provide real-time intelligence, automated dispatch, and autonomous response capabilities for security teams protecting estates, hotels, corporates, and governments across the continent.
+          </motion.p>
+
+          <motion.p
+            variants={itemVariants}
+            className="text-base md:text-lg text-gray-300 mb-8 text-balance max-w-3xl mx-auto leading-relaxed"
+          >
+            When incidents happen, our AI-powered system cuts emergency response times by over 50% through instant threat analysis, optimal resource allocation, and coordinated action—replacing fragmented WhatsApp groups with a unified command center.
           </motion.p>
 
           <motion.div

@@ -10,9 +10,9 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Lemtik - The Operating System for African Security',
-  description: 'Africa\'s first civilian-grade C4I platform. AI-powered intelligence, dispatch, and autonomous response cutting emergency response times by over 50%.',
-  generator: 'Lemtik',
+  title: 'Lemtik Security - The Operating System for African Security',
+  description: 'Africa\'s first civilian-grade command and control platform. Real-time intelligence, automated dispatch, and autonomous response for security teams protecting estates, hotels, corporates, and governments.',
+  generator: 'Lemtik Security',
   icons: {
     icon: [
       {
