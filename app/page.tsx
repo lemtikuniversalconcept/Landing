@@ -543,14 +543,52 @@ const FinalCTA = () => {
   )
 }
 
+const DataTransparency = () => {
+  return (
+    <section className="py-16 px-4 bg-navy-900">
+      <div className="max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="bg-card border border-border rounded-xl p-8"
+        >
+          <h2 className="text-2xl font-bold text-white mb-4">Data & Privacy</h2>
+          <p className="text-gray-300 mb-6">
+            Lemtik Security is committed to protecting your privacy and being transparent about how we use data. When you use our platform, we may request access to:
+          </p>
+          <ul className="space-y-3 text-gray-300 mb-6">
+            <li className="flex gap-3">
+              <span className="text-cyan-400 font-semibold">•</span>
+              <span><strong>Identity & Account Information:</strong> To authenticate users and manage your account securely.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-cyan-400 font-semibold">•</span>
+              <span><strong>Location Data:</strong> To provide real-time incident response and resource dispatch capabilities essential to our security operations platform.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-cyan-400 font-semibold">•</span>
+              <span><strong>Security & Device Information:</strong> To ensure platform security, prevent fraud, and maintain service integrity.</span>
+            </li>
+          </ul>
+          <p className="text-gray-300 mb-4">
+            We never sell your data to third parties. All information is encrypted and stored securely. For detailed information about our practices, please review our <Link href="/privacy" className="text-cyan-400 hover:text-cyan-300 underline">Privacy Policy</Link>.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
 const Footer = () => {
   return (
     <footer className="bg-navy-800 border-t border-border py-12 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
-            <h3 className="font-bold text-white mb-4">Lemtik</h3>
-            <p className="text-gray-400 text-sm">Africa's civilian-grade C4I platform.</p>
+            <h3 className="font-bold text-white mb-4">Lemtik Security</h3>
+            <p className="text-gray-400 text-sm">Africa's first civilian-grade command and control platform for security teams.</p>
           </div>
           <div>
             <h4 className="font-semibold text-white mb-4">Product</h4>
@@ -598,6 +636,7 @@ export default function HomePage() {
       <Mission />
       <Traction />
       <FinalCTA />
+      <DataTransparency />
       <Footer />
     </main>
   )
