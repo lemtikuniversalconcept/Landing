@@ -565,7 +565,7 @@ const Footer = () => {
         </div>
         <div className="border-t border-border pt-8">
           <p className="text-gray-400 text-sm text-center">
-            © 2026 Lemtik. All rights reserved. Built in Lagos, Nigeria.
+            © 2026 Lemtik Security. All rights reserved. Built in Lagos, Nigeria.
           </p>
         </div>
       </div>
