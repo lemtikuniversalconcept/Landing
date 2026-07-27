@@ -81,7 +81,7 @@ export default function SolutionsHub() {
             transition={{ duration: 0.6 }}
           >
             Whoever you protect,{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-orange-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/60">
               we make it faster
             </span>
           </motion.h1>
@@ -125,7 +125,7 @@ export default function SolutionsHub() {
 
                       {/* Content */}
                       <div className="absolute inset-0 flex flex-col justify-end p-6">
-                        <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-cyan-400 transition">
+                        <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition">
                           {solution.title}
                         </h3>
                         <p className="text-muted-foreground text-sm">{solution.shortDescription}</p>
@@ -133,7 +133,7 @@ export default function SolutionsHub() {
                     </div>
 
                     {/* CTA */}
-                    <div className="flex items-center gap-2 text-cyan-400 group-hover:text-cyan-300 transition">
+                    <div className="flex items-center gap-2 text-primary group-hover:text-primary/80 transition">
                       <span className="font-medium">Learn more</span>
                       <span className="transform group-hover:translate-x-1 transition">→</span>
                     </div>
@@ -173,10 +173,10 @@ export default function SolutionsHub() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <Link
-              href="/demo"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-cyan-500 text-background font-semibold rounded-lg hover:bg-cyan-400 transition"
+              href="/contact"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition"
             >
-              Book a Consultation
+              Talk With Our Team
             </Link>
           </motion.div>
         </div>
