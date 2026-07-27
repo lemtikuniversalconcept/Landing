@@ -107,7 +107,7 @@ export default function PlatformPage() {
           >
             <h1 className="text-5xl font-bold leading-tight text-balance md:text-6xl">
               One platform.{' '}
-              <span className="bg-gradient-to-r from-primary via-cyan-400 to-primary bg-clip-text text-transparent">
+              <span className="text-primary">
                 Five intelligent brains.
               </span>{' '}
               <br />

@@ -49,7 +49,7 @@ const Hero = () => {
         ].map((pos, idx) => (
           <motion.div
             key={idx}
-            className="absolute w-2 h-2 bg-cyan-400 rounded-full"
+            className="absolute w-2 h-2 bg-primary rounded-full"
             style={{ top: pos.top, left: pos.left }}
             animate={{
               scale: [1, 1.5, 1],
@@ -75,7 +75,7 @@ const Hero = () => {
             variants={itemVariants}
             className="mb-4"
           >
-            <span className="text-cyan-400 font-semibold text-lg">Lemtik Security</span>
+            <span className="text-primary font-semibold text-lg">Lemtik Security</span>
           </motion.div>
 
           <motion.h1
@@ -103,10 +103,10 @@ const Hero = () => {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center mb-8"
           >
-            <button className="px-8 py-3 bg-cyan-500 hover:bg-cyan-600 text-navy-900 font-semibold rounded-lg transition-colors">
-              Book a Demo
+            <button className="px-8 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition-colors">
+              Request a Demo
             </button>
-            <button className="px-8 py-3 bg-transparent border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 font-semibold rounded-lg transition-colors">
+            <button className="px-8 py-3 bg-transparent border-2 border-primary text-primary hover:bg-primary/10 font-semibold rounded-lg transition-colors">
               See How It Works ↓
             </button>
           </motion.div>
@@ -158,9 +158,9 @@ const Problem = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: stat.delay }}
               viewport={{ once: true }}
-              className="bg-card border border-border rounded-xl p-8 text-center hover:border-cyan-500/50 transition-colors"
+              className="bg-card border border-border rounded-xl p-8 text-center hover:border-primary/50 transition-colors"
             >
-              <div className="text-4xl md:text-5xl font-bold text-cyan-400 mb-4">
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-4">
                 <StatCounter value={stat.value} />
               </div>
               <p className="text-gray-300 whitespace-pre-line">{stat.label}</p>
@@ -244,9 +244,9 @@ const IncidentSimulation = () => {
         >
           <Link
             href="/platform"
-            className="inline-flex items-center px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-colors"
+            className="inline-flex items-center px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition-colors"
           >
-            See the full platform →
+            Explore the Platform →
           </Link>
         </motion.div>
       </div>
@@ -280,14 +280,14 @@ const IncidentLoop = () => {
       {/* Stage 2: AI Analysis */}
       {stage >= 1 && (
         <motion.div
-          className="absolute top-20 left-10 bg-card/80 border border-cyan-500/50 rounded-lg p-4"
+          className="absolute top-20 left-10 bg-card/80 border border-primary/50 rounded-lg p-4"
           animate={{ x: stage === 1 ? 0 : -50, opacity: stage === 1 ? 1 : 0 }}
           transition={{ duration: 0.4 }}
         >
-          <p className="text-cyan-400 text-sm font-mono">AI Agent analysing...</p>
+          <p className="text-primary text-sm font-mono">AI Agent analysing...</p>
           <div className="w-32 h-2 bg-gray-600 rounded mt-2 overflow-hidden">
             <motion.div
-              className="h-full bg-cyan-500"
+              className="h-full bg-primary"
               animate={{ width: stage === 1 ? '85%' : '0%' }}
               transition={{ duration: 2.2 }}
             />
@@ -384,11 +384,10 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: idx * 0.05 }}
               viewport={{ once: true }}
-              className="bg-card border border-border rounded-xl p-6 hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/20 transition-all"
+              className="bg-card border border-border rounded-xl p-6 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all"
             >
-              <div className="flex items-start justify-between mb-4">
-                <h3 className="text-lg font-semibold text-white">{service.name}</h3>
-                <span className="text-xs px-2 py-1 bg-cyan-500/20 text-cyan-400 rounded-full">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">
                   {service.status}
                 </span>
               </div>
@@ -441,7 +440,7 @@ const Solutions = () => {
                 className="object-cover group-hover:scale-110 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                <h3 className="text-2xl font-bold text-white text-center px-4 group-hover:text-cyan-400 transition-colors">
+                <h3 className="text-2xl font-bold text-white text-center px-4 group-hover:text-primary transition-colors">
                   {solution.name}
                 </h3>
               </div>
@@ -476,7 +475,7 @@ const Mission = () => {
           </p>
           <Link
             href="/mission"
-            className="inline-flex items-center px-6 py-3 bg-cyan-500 hover:bg-cyan-600 text-navy-900 font-semibold rounded-lg transition-colors"
+            className="inline-flex items-center px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition-colors"
           >
             Read our mission →
           </Link>
@@ -530,11 +529,11 @@ const FinalCTA = () => {
             See what command should feel like.
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-3 bg-cyan-500 hover:bg-cyan-600 text-navy-900 font-semibold rounded-lg transition-colors">
-              Book a Demo
+            <button className="px-8 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition-colors">
+              Request a Demo
             </button>
-            <button className="px-8 py-3 bg-transparent border-2 border-gray-500 text-white hover:border-orange-500 font-semibold rounded-lg transition-colors">
-              Talk to Us
+            <button className="px-8 py-3 bg-transparent border-2 border-muted text-foreground hover:border-primary font-semibold rounded-lg transition-colors">
+              Talk With Our Team
             </button>
           </div>
         </motion.div>
@@ -560,20 +559,20 @@ const DataTransparency = () => {
           </p>
           <ul className="space-y-3 text-gray-300 mb-6">
             <li className="flex gap-3">
-              <span className="text-cyan-400 font-semibold">•</span>
+              <span className="text-primary font-semibold">•</span>
               <span><strong>Identity & Account Information:</strong> To authenticate users and manage your account securely.</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-cyan-400 font-semibold">•</span>
+              <span className="text-primary font-semibold">•</span>
               <span><strong>Location Data:</strong> To provide real-time incident response and resource dispatch capabilities essential to our security operations platform.</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-cyan-400 font-semibold">•</span>
+              <span className="text-primary font-semibold">•</span>
               <span><strong>Security & Device Information:</strong> To ensure platform security, prevent fraud, and maintain service integrity.</span>
             </li>
           </ul>
           <p className="text-gray-300 mb-4">
-            We never sell your data to third parties. All information is encrypted and stored securely. For detailed information about our practices, please review our <Link href="/privacy" className="text-cyan-400 hover:text-cyan-300 underline">Privacy Policy</Link>.
+            We never sell your data to third parties. All information is encrypted and stored securely. For detailed information about our practices, please review our <Link href="/privacy" className="text-primary hover:text-primary/80 underline">Privacy Policy</Link>.
           </p>
         </motion.div>
       </div>
@@ -593,25 +592,25 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-white mb-4">Product</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
-              <li><Link href="/platform" className="hover:text-cyan-400 transition-colors">Platform</Link></li>
-              <li><Link href="/solutions" className="hover:text-cyan-400 transition-colors">Solutions</Link></li>
-              <li><Link href="/pricing" className="hover:text-cyan-400 transition-colors">Pricing</Link></li>
+              <li><Link href="/platform" className="hover:text-primary transition-colors">Platform</Link></li>
+              <li><Link href="/solutions" className="hover:text-primary transition-colors">Solutions</Link></li>
+              <li><Link href="/pricing" className="hover:text-primary transition-colors">Pricing</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold text-white mb-4">Company</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
-              <li><Link href="/mission" className="hover:text-cyan-400 transition-colors">Mission</Link></li>
-              <li><Link href="/newsroom" className="hover:text-cyan-400 transition-colors">Newsroom</Link></li>
-              <li><Link href="/careers" className="hover:text-cyan-400 transition-colors">Careers</Link></li>
+              <li><Link href="/mission" className="hover:text-primary transition-colors">Mission</Link></li>
+              <li><Link href="/newsroom" className="hover:text-primary transition-colors">Newsroom</Link></li>
+              <li><Link href="/careers" className="hover:text-primary transition-colors">Careers</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold text-white mb-4">Legal</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
-              <li><Link href="/privacy" className="hover:text-cyan-400 transition-colors">Privacy</Link></li>
-              <li><Link href="/terms" className="hover:text-cyan-400 transition-colors">Terms</Link></li>
-              <li><Link href="/security" className="hover:text-cyan-400 transition-colors">Security</Link></li>
+              <li><Link href="/privacy" className="hover:text-primary transition-colors">Privacy</Link></li>
+              <li><Link href="/terms" className="hover:text-primary transition-colors">Terms</Link></li>
+              <li><Link href="/security" className="hover:text-primary transition-colors">Security</Link></li>
             </ul>
           </div>
         </div>

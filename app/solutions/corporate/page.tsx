@@ -82,7 +82,7 @@ export default function CorporateSolution() {
             ].map((point, idx) => (
               <motion.div
                 key={idx}
-                className="border-l-2 border-cyan-500 pl-6 py-4"
+                className="border-l-2 border-primary pl-6 py-4"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -135,7 +135,7 @@ export default function CorporateSolution() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
-                <h3 className="text-2xl font-bold text-cyan-400 mb-3">{feature.title}</h3>
+                <h3 className="text-2xl font-bold text-primary mb-3">{feature.title}</h3>
                 <p className="text-muted-foreground mb-6">{feature.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {feature.features.map((f) => (
@@ -166,7 +166,7 @@ export default function CorporateSolution() {
             </p>
             <Link
               href="/demo?solution=corporate"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-cyan-500 text-background font-semibold rounded-lg hover:bg-cyan-400 transition"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition"
             >
               Talk to Our Team
             </Link>
@@ -203,7 +203,7 @@ export default function CorporateSolution() {
           >
             <Link
               href="/demo?solution=corporate"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-cyan-500 text-background font-semibold rounded-lg hover:bg-cyan-400 transition"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition"
             >
               Book a Demo (Corporate)
             </Link>
