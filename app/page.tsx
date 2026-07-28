@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import Map from 'react-map-gl'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -28,7 +27,6 @@ const itemVariants = {
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
       <div
         className="absolute inset-0 z-0"
         style={{
@@ -40,7 +38,6 @@ const Hero = () => {
         <div className="absolute inset-0 bg-black/70" />
       </div>
 
-      {/* Animated pulse points */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {[
           { top: '30%', left: '40%', delay: 0 },
@@ -64,7 +61,6 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
         <motion.div
           variants={containerVariants}
@@ -112,7 +108,6 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        {/* Status strip */}
         <motion.div
           variants={itemVariants}
           className="bg-green-500/10 border border-green-500/30 rounded-lg px-4 py-2 inline-block text-sm text-green-300"
@@ -125,45 +120,40 @@ const Hero = () => {
 }
 
 const Problem = () => {
-  const stats = [
-    { value: '20-45', label: 'min\nAverage Lagos emergency response time', delay: 0 },
-    { value: '$2B', label: 'Nigeria\'s annual private security spend', delay: 0.2 },
-    { value: '0', label: 'Unified intelligence platforms built for it', delay: 0.4 },
-  ]
-
   return (
-    <section className="py-24 px-4 bg-gradient-to-b from-navy-900 to-navy-800">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-20 px-4 bg-navy-900">
+      <div className="max-w-5xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 text-balance">
-            Security response in African cities is broken.
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 text-balance">
+            The Cost of Fragmentation
           </h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            When an incident happens, coordination still runs on WhatsApp groups and phone calls. Nobody knows which officer is closest, which vehicle has fuel, or what threats exist in the area. We built the system that knows all three — instantly.
+          <p className="text-lg text-gray-400 text-balance max-w-2xl mx-auto">
+            When incidents happen, information doesn&apos;t flow. Teams use WhatsApp. Managers don&apos;t see alerts. Response is reactive, not coordinated. Every minute of delay is a minute of exposed risk.
           </p>
         </motion.div>
 
-        {/* Stats grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {stats.map((stat, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            { stat: '3-5 min', label: 'Average response time with fragmented systems' },
+            { stat: '60%', label: 'Incidents never recorded for compliance' },
+            { stat: '80%', label: 'Of sites unable to correlate threats across locations' },
+          ].map((item, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: stat.delay }}
-              viewport={{ once: true }}
               className="bg-card border border-border rounded-xl p-8 text-center hover:border-primary/50 transition-colors"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: idx * 0.1 }}
+              viewport={{ once: true }}
             >
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-4">
-                <StatCounter value={stat.value} />
-              </div>
-              <p className="text-gray-300 whitespace-pre-line">{stat.label}</p>
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-4">{item.stat}</div>
+              <p className="text-gray-400 text-sm">{item.label}</p>
             </motion.div>
           ))}
         </div>
@@ -172,226 +162,230 @@ const Problem = () => {
   )
 }
 
-const StatCounter = ({ value }: { value: string }) => {
-  const [displayValue, setDisplayValue] = useState('0')
+const Fragmentation = () => {
+  const systems = [
+    { name: 'Radio', icon: '📡', x: '10%' },
+    { name: 'WhatsApp', icon: '💬', x: '25%' },
+    { name: 'CCTV', icon: '📹', x: '40%' },
+    { name: 'Logs', icon: '📋', x: '55%' },
+    { name: 'Access Control', icon: '🔐', x: '70%' },
+    { name: 'Vehicles', icon: '🚗', x: '85%' },
+  ]
 
-  useEffect(() => {
-    const duration = 2000
-    const startTime = Date.now()
+  return (
+    <section className="py-20 px-4 bg-navy-800">
+      <div className="max-w-6xl mx-auto">
+        <motion.h2
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-3xl md:text-4xl font-bold text-center text-white mb-16"
+        >
+          Fragmented Tools. Fragmented Response.
+        </motion.h2>
 
-    const animate = () => {
-      const elapsed = Date.now() - startTime
-      const progress = Math.min(elapsed / duration, 1)
+        <div className="relative h-80 bg-gradient-to-b from-navy-900/50 to-navy-800/50 rounded-xl border border-border/50 overflow-hidden flex items-center justify-center">
+          {/* Center hub showing disconnection */}
+          <div className="absolute inset-0 flex items-center justify-center z-10">
+            <motion.div
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 3, repeat: Infinity }}
+              className="w-16 h-16 rounded-full border-2 border-red-500/50 flex items-center justify-center"
+            >
+              <span className="text-2xl">❌</span>
+            </motion.div>
+          </div>
 
-      if (value.includes('-')) {
-        const [min, max] = value.split('-').map(v => parseInt(v))
-        const current = Math.floor(min + (max - min) * progress)
-        setDisplayValue(`${current}`)
-      } else if (value === '$2B') {
-        const current = Math.floor(2 * 1000000000 * progress)
-        setDisplayValue(`$${(current / 1000000000).toFixed(1)}B`)
-      } else {
-        setDisplayValue(value)
-      }
+          {/* Disconnected systems orbiting */}
+          {systems.map((sys, idx) => (
+            <motion.div
+              key={idx}
+              className="absolute flex flex-col items-center gap-2"
+              style={{ left: sys.x, top: '50%', translateY: '-50%' }}
+              animate={{
+                y: [0, -10, 0],
+              }}
+              transition={{
+                duration: 2 + idx * 0.2,
+                repeat: Infinity,
+              }}
+            >
+              <div className="text-4xl">{sys.icon}</div>
+              <span className="text-xs text-gray-400 text-center">{sys.name}</span>
+              <div className="w-0.5 h-20 bg-gradient-to-b from-red-500/50 to-transparent" />
+            </motion.div>
+          ))}
+        </div>
 
-      if (progress < 1) {
-        requestAnimationFrame(animate)
-      }
-    }
-
-    animate()
-  }, [value])
-
-  return displayValue
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="text-center text-gray-400 mt-8 text-sm"
+        >
+          Six isolated systems. Zero coordination. Every incident starts as a communication breakdown.
+        </motion.p>
+      </div>
+    </section>
+  )
 }
 
-const IncidentSimulation = () => {
+const Convergence = () => {
   return (
-    <section className="py-24 px-4 bg-navy-900">
+    <section className="py-20 px-4 bg-navy-900">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-            Watch a response happen in real time.
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-balance">
+            One Platform.
           </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6 text-balance">
+            One Operational Picture.
+          </h2>
+          <p className="text-lg text-gray-400 text-balance max-w-2xl mx-auto">
+            All systems converge into a single, unified command center where operators see everything, decide faster, and coordinate instantly.
+          </p>
         </motion.div>
 
-        {/* Mapbox Simulation */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="bg-card border border-border rounded-2xl overflow-hidden h-96 mb-8 relative"
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-navy-800 via-navy-900 to-black flex items-center justify-center">
-            {/* Simulated incident loop */}
-            <IncidentLoop />
-          </div>
-        </motion.div>
+        <div className="relative h-80 bg-gradient-to-b from-primary/10 to-navy-800/50 rounded-xl border border-primary/30 overflow-hidden flex items-center justify-center">
+          {/* Central unified hub */}
+          <motion.div
+            animate={{
+              scale: [1, 1.05, 1],
+              boxShadow: ['0 0 0 0px rgba(0, 212, 255, 0.4)', '0 0 0 20px rgba(0, 212, 255, 0.1)', '0 0 0 0px rgba(0, 212, 255, 0.4)'],
+            }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-24 h-24 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center z-20"
+          >
+            <span className="text-4xl">🎯</span>
+          </motion.div>
+
+          {/* Converging lines */}
+          {[...Array(6)].map((_, idx) => (
+            <motion.div
+              key={idx}
+              className="absolute w-1 h-20 bg-gradient-to-t from-primary/50 to-transparent"
+              style={{
+                left: '50%',
+                top: '50%',
+                transformOrigin: 'center',
+                rotate: (idx * 60) + 'deg',
+              }}
+              animate={{
+                scaleY: [0, 1, 0],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: idx * 0.1,
+              }}
+            />
+          ))}
+        </div>
 
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-center"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12"
         >
-          <Link
-            href="/platform"
-            className="inline-flex items-center px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition-colors"
-          >
-            Explore the Platform →
-          </Link>
+          {[
+            { title: 'Unified Intelligence', desc: 'All data streams into one operational picture' },
+            { title: 'Instant Coordination', desc: 'Teams act in sync, not parallel' },
+            { title: 'Faster Decisions', desc: 'Operators see context, not noise' },
+          ].map((item, idx) => (
+            <motion.div
+              key={idx}
+              className="bg-card/50 border border-border/50 rounded-lg p-6 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 + idx * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-lg font-semibold text-primary mb-2">{item.title}</h3>
+              <p className="text-sm text-gray-400">{item.desc}</p>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>
   )
 }
 
-const IncidentLoop = () => {
-  const [stage, setStage] = useState(0)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setStage(prev => (prev + 1) % 5)
-    }, 2400)
-    return () => clearInterval(interval)
-  }, [])
-
-  return (
-    <div className="w-full h-full relative">
-      {/* Stage 1: Incident appears */}
-      {stage >= 0 && (
-        <motion.div
-          className="absolute top-1/3 left-1/2 transform -translate-x-1/2"
-          animate={{ scale: stage === 0 ? 1 : 0.8, opacity: stage === 0 ? 1 : 0 }}
-          transition={{ duration: 0.4 }}
-        >
-          <div className="w-4 h-4 bg-red-500 rounded-full shadow-lg shadow-red-500" />
-        </motion.div>
-      )}
-
-      {/* Stage 2: AI Analysis */}
-      {stage >= 1 && (
-        <motion.div
-          className="absolute top-20 left-10 bg-card/80 border border-primary/50 rounded-lg p-4"
-          animate={{ x: stage === 1 ? 0 : -50, opacity: stage === 1 ? 1 : 0 }}
-          transition={{ duration: 0.4 }}
-        >
-          <p className="text-primary text-sm font-mono">AI Agent analysing...</p>
-          <div className="w-32 h-2 bg-gray-600 rounded mt-2 overflow-hidden">
-            <motion.div
-              className="h-full bg-primary"
-              animate={{ width: stage === 1 ? '85%' : '0%' }}
-              transition={{ duration: 2.2 }}
-            />
-          </div>
-        </motion.div>
-      )}
-
-      {/* Stage 3: Officers dispatch */}
-      {stage >= 2 && (
-        <motion.div
-          className="absolute bottom-1/3 right-20"
-          animate={{ opacity: stage >= 2 ? 1 : 0 }}
-          transition={{ duration: 0.4 }}
-        >
-          {[0, 1].map(i => (
-            <motion.div
-              key={i}
-              className="w-3 h-3 bg-blue-400 rounded-full mb-4"
-              animate={{
-                x: stage === 2 ? 0 : 200,
-                y: stage === 2 ? 0 : -150 * (i + 1),
-              }}
-              transition={{ duration: 1.8 }}
-            />
-          ))}
-        </motion.div>
-      )}
-
-      {/* Stage 4: Route line */}
-      {stage >= 3 && (
-        <motion.svg
-          className="absolute inset-0 w-full h-full"
-          animate={{ opacity: stage === 3 ? 1 : 0.3 }}
-          transition={{ duration: 0.4 }}
-        >
-          <motion.line
-            x1="50%"
-            y1="50%"
-            x2="80%"
-            y2="30%"
-            stroke="#00d4ff"
-            strokeWidth="2"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: stage === 3 ? 1 : 0 }}
-            transition={{ duration: 1.6 }}
-          />
-        </motion.svg>
-      )}
-
-      {/* Stage 5: Response dispatched */}
-      {stage >= 4 && (
-        <motion.div
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 bg-green-500/10 border border-green-500/50 rounded-lg px-4 py-2"
-          animate={{ scale: stage === 4 ? 1 : 0.8, opacity: stage === 4 ? 1 : 0 }}
-          transition={{ duration: 0.4 }}
-        >
-          <p className="text-green-400 text-sm font-mono">✓ Response dispatched in 4.2 seconds</p>
-        </motion.div>
-      )}
-    </div>
-  )
-}
-
-const Services = () => {
-  const services = [
-    { name: 'Intelligence Engine', desc: '24/7 threat monitoring', status: 'Live' },
-    { name: 'Inventory Service', desc: 'Resource tracking & alerts', status: 'Operational' },
-    { name: 'Route Calculator', desc: 'Fastest path, every time', status: 'Operational' },
-    { name: 'Proximity Finder', desc: 'Right officer, right moment', status: 'Operational' },
-    { name: 'Autonomous Control', desc: 'Infrastructure that responds', status: 'Live' },
-    { name: 'Master AI Agent', desc: 'The brain behind every decision', status: 'Operational' },
+const CoreCapabilities = () => {
+  const capabilities = [
+    {
+      title: 'Incident Management',
+      desc: 'Log, categorize, escalate, and track incidents in real-time with automatic alerting.',
+    },
+    {
+      title: 'Patrol Operations',
+      desc: 'GPS-tracked patrol routes, scheduled coverage areas, live operator status.',
+    },
+    {
+      title: 'Operational Intelligence',
+      desc: 'Entity relationships, threat correlation, pattern detection across locations.',
+    },
+    {
+      title: 'Asset Management',
+      desc: 'Inventory tracking for vehicles, equipment, personnel, and deployment status.',
+    },
+    {
+      title: 'Response Routing',
+      desc: 'Intelligent dispatch that considers distance, availability, and incident type.',
+    },
+    {
+      title: 'Unified Command Centre',
+      desc: 'Single dashboard where operators control all operations and see all systems.',
+    },
+    {
+      title: 'Integration Engine',
+      desc: 'Connect CCTV, access control, IoT sensors, radios, and legacy systems.',
+    },
+    {
+      title: 'AI Decision Support',
+      desc: 'Machine learning assists operators with pattern recognition and recommendations.',
+    },
   ]
 
   return (
-    <section className="py-24 px-4 bg-navy-900">
+    <section className="py-20 px-4 bg-navy-800">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-            Six intelligent services. One command platform.
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-balance">
+            Eight Operational Capabilities
           </h2>
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            Every function a security operations center needs, built into one platform.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {capabilities.map((cap, idx) => (
             <motion.div
               key={idx}
+              className="bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-colors"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: idx * 0.05 }}
               viewport={{ once: true }}
-              className="bg-card border border-border rounded-xl p-6 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">
-                  {service.status}
-                </span>
-              </div>
-              <p className="text-gray-400">{service.desc}</p>
+              <h3 className="text-lg font-semibold text-primary mb-3">{cap.title}</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">{cap.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -400,57 +394,504 @@ const Services = () => {
   )
 }
 
-const Solutions = () => {
-  const solutions = [
-    { name: 'Estates & Residential', image: '/images/lagos-estate.png' },
-    { name: 'Hotels & Hospitality', image: '/images/lagos-hotel.png' },
-    { name: 'Corporate & Enterprise', image: '/images/lagos-corporate.png' },
-    { name: 'Government & Public Sector', image: '/images/lagos-government.png' },
+const IncidentSimulation = () => {
+  const [stage, setStage] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setStage((prev) => (prev + 1) % 5)
+    }, 3000)
+    return () => clearInterval(timer)
+  }, [])
+
+  const stages = [
+    {
+      title: 'Alert Triggered',
+      description: 'Security guard reports suspicious activity via app.',
+      color: 'red',
+    },
+    {
+      title: 'AI Analysis',
+      description: 'System analyzes incident type, location, and available resources.',
+      color: 'yellow',
+    },
+    {
+      title: 'Optimal Dispatch',
+      description: 'Closest available patrol team receives priority assignment.',
+      color: 'blue',
+    },
+    {
+      title: 'Coordination',
+      description: 'All teams see incident context, location, and response status in real-time.',
+      color: 'purple',
+    },
+    {
+      title: 'Resolution Logged',
+      description: 'Incident resolved and automatically added to compliance records.',
+      color: 'green',
+    },
   ]
 
   return (
-    <section className="py-24 px-4 bg-gradient-to-b from-navy-900 to-navy-800">
+    <section className="py-20 px-4 bg-navy-900">
+      <div className="max-w-5xl mx-auto">
+        <motion.h2
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl font-bold text-center text-white mb-4 text-balance"
+        >
+          How It Works in Real-Time
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="text-center text-gray-400 mb-12 text-lg"
+        >
+          From alert to coordinated response in under 60 seconds.
+        </motion.p>
+
+        <div className="bg-card border border-border rounded-xl p-8 md:p-12">
+          {/* Stage visualization */}
+          <div className="mb-12">
+            <div className="flex justify-between mb-8">
+              {stages.map((s, idx) => (
+                <div
+                  key={idx}
+                  className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-sm transition-all ${
+                    stage === idx
+                      ? 'bg-primary text-primary-foreground scale-125'
+                      : stage > idx
+                        ? 'bg-green-500/30 text-green-400'
+                        : 'bg-gray-700/30 text-gray-500'
+                  }`}
+                >
+                  {idx + 1}
+                </div>
+              ))}
+            </div>
+
+            {/* Stage content */}
+            <motion.div
+              key={stage}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4 }}
+              className="bg-background/50 border border-border/50 rounded-lg p-6"
+            >
+              <h3 className="text-2xl font-bold text-primary mb-3">{stages[stage].title}</h3>
+              <p className="text-gray-300 mb-4">{stages[stage].description}</p>
+
+              {/* Animated visualization based on stage */}
+              {stage === 1 && (
+                <div className="h-32 bg-gradient-to-b from-yellow-500/20 to-transparent rounded-lg flex items-center justify-center">
+                  <div className="text-4xl">🔍 Analyzing...</div>
+                </div>
+              )}
+              {stage === 2 && (
+                <div className="h-32 bg-gradient-to-b from-blue-500/20 to-transparent rounded-lg flex items-center justify-center">
+                  <div className="text-4xl">📍 Route optimized</div>
+                </div>
+              )}
+              {stage === 3 && (
+                <div className="h-32 bg-gradient-to-b from-purple-500/20 to-transparent rounded-lg flex items-center justify-center">
+                  <div className="text-4xl">🔗 Teams connected</div>
+                </div>
+              )}
+              {stage === 4 && (
+                <div className="h-32 bg-gradient-to-b from-green-500/20 to-transparent rounded-lg flex items-center justify-center">
+                  <div className="text-4xl">✓ Resolved & recorded</div>
+                </div>
+              )}
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <Link
+              href="/platform"
+              className="inline-flex items-center px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition-colors"
+            >
+              Explore the Platform →
+            </Link>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+const UnifiedCommandCentre = () => {
+  return (
+    <section className="py-20 px-4 bg-navy-800">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-balance">
+            The Unified Command Centre
+          </h2>
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            One dashboard. Complete operational awareness. Every incident, every asset, every team in one place.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="bg-gradient-to-br from-primary/5 to-navy-900/50 border border-primary/30 rounded-xl p-8 md:p-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-            Built for anyone protecting people.
-          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                title: 'Live Incident Feed',
+                items: ['Active incidents', 'Priority level', 'Assignment status'],
+              },
+              {
+                title: 'Operational Map',
+                items: ['Real-time positions', 'Patrol coverage', 'Asset locations'],
+              },
+              {
+                title: 'Resource Status',
+                items: ['Available teams', 'Equipment status', 'Deployment history'],
+              },
+              {
+                title: 'Historical Analytics',
+                items: ['Incident trends', 'Response metrics', 'Compliance reports'],
+              },
+              {
+                title: 'Coordination Tools',
+                items: ['Team messaging', 'Dispatch controls', 'Escalation matrix'],
+              },
+              {
+                title: 'Integration Status',
+                items: ['CCTV feeds', 'Access logs', 'Sensor data'],
+              },
+            ].map((panel, idx) => (
+              <motion.div
+                key={idx}
+                className="bg-card/50 border border-border/50 rounded-lg p-4"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: idx * 0.08 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-primary font-semibold mb-3">{panel.title}</h3>
+                <ul className="space-y-2">
+                  {panel.items.map((item, i) => (
+                    <li key={i} className="text-sm text-gray-400 flex gap-2">
+                      <span className="text-primary">→</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {solutions.map((solution, idx) => (
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="text-center text-gray-400 mt-8 text-sm"
+        >
+          No switching between applications. No manual updates. One operator sees everything and controls everything.
+        </motion.p>
+      </div>
+    </section>
+  )
+}
+
+const OperationalIntelligence = () => {
+  return (
+    <section className="py-20 px-4 bg-navy-900">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-balance">
+            Operational Intelligence
+          </h2>
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            AI doesn&apos;t decide. Operators do. But operators decide faster when the system reveals what matters.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            {
+              title: 'Entity Relationships',
+              desc: 'Understand who, what, where, and when. The system connects incidents to people, locations, and patterns.',
+              icon: '🔗',
+            },
+            {
+              title: 'Incident Correlation',
+              desc: 'One theft becomes a pattern. Multiple break-ins become a campaign. The system sees what humans miss.',
+              icon: '🔍',
+            },
+            {
+              title: 'Pattern Detection',
+              desc: 'Time, location, type of incident. The system learns normal and alerts when something changes.',
+              icon: '📊',
+            },
+          ].map((item, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              className="bg-card border border-border rounded-lg p-8 hover:border-primary/50 transition-colors"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               viewport={{ once: true }}
-              className="group relative h-64 rounded-xl overflow-hidden cursor-pointer"
             >
-              <Image
-                src={solution.image}
-                alt={solution.name}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                <h3 className="text-2xl font-bold text-white text-center px-4 group-hover:text-primary transition-colors">
-                  {solution.name}
-                </h3>
-              </div>
-              <Link
-                href={`/solutions/${solution.name.toLowerCase().replace(/\s+/g, '-')}`}
-                className="absolute inset-0"
-              />
+              <div className="text-4xl mb-4">{item.icon}</div>
+              <h3 className="text-lg font-semibold text-primary mb-3">{item.title}</h3>
+              <p className="text-gray-400 leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="mt-12 bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-8 text-center"
+        >
+          <p className="text-gray-300 text-lg">
+            <strong>Result:</strong> Operators make better decisions. Security improves. Liability decreases.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+const InfrastructureIntegration = () => {
+  const integrations = [
+    { name: 'CCTV', icon: '📹', status: 'Real-time feeds' },
+    { name: 'Access Control', icon: '🔐', status: 'Door/gate logs' },
+    { name: 'IoT Sensors', icon: '📡', status: 'Motion, intrusion' },
+    { name: 'GPS/Vehicles', icon: '🚗', status: 'Asset tracking' },
+    { name: 'Radio Systems', icon: '📢', status: 'Voice logging' },
+    { name: 'Guard Patrols', icon: '🚶', status: 'Manual input' },
+    { name: 'Alarms', icon: '🔔', status: 'Automated alerts' },
+    { name: 'Legacy Systems', icon: '🔗', status: 'Custom APIs' },
+  ]
+
+  return (
+    <section className="py-20 px-4 bg-navy-800">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-balance">
+            Integrates With Everything
+          </h2>
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            Your existing infrastructure becomes part of one unified system. No rip-and-replace.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {integrations.map((int, idx) => (
+            <motion.div
+              key={idx}
+              className="bg-card border border-border rounded-lg p-6 text-center hover:border-primary/50 transition-colors"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: idx * 0.05 }}
+              viewport={{ once: true }}
+            >
+              <div className="text-3xl mb-2">{int.icon}</div>
+              <h4 className="font-semibold text-white text-sm mb-1">{int.name}</h4>
+              <p className="text-xs text-gray-400">{int.status}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="text-center text-gray-400 mt-8 text-sm"
+        >
+          Every new integration brings more context into the command centre. Every system talks to every other system.
+        </motion.p>
+      </div>
+    </section>
+  )
+}
+
+const Industries = () => {
+  const solutions = [
+    {
+      title: 'Residential Estates',
+      challenge: 'Fragmented guards. No gate visibility. Residents never know if their complaint was handled.',
+      solution: 'Central control for all gates, patrols, and incidents. Residents see status updates in real-time.',
+    },
+    {
+      title: 'Hotels & Hospitality',
+      challenge: 'Guest safety depends on scattered staff. Theft and incidents happen but aren&apos;t connected.',
+      solution: 'Unified response for emergencies. Incident patterns reveal systemic weaknesses.',
+    },
+    {
+      title: 'Corporate Offices',
+      challenge: 'Multiple buildings. No view into who&apos;s where. Compliance auditors find gaps in records.',
+      solution: 'One dashboard across all locations. Automated audit trails satisfy regulators.',
+    },
+    {
+      title: 'Government Facilities',
+      challenge: 'Response time matters. Multiple agencies need to coordinate. Liability is high.',
+      solution: 'Real-time inter-agency coordination. Decision support for threat escalation.',
+    },
+    {
+      title: 'Critical Infrastructure',
+      challenge: 'High-consequence incidents require perfect coordination. Legacy systems don&apos;t communicate.',
+      solution: 'All systems unified. Operators see everything. Playbooks execute automatically.',
+    },
+    {
+      title: 'Retail & Commercial',
+      challenge: 'Stores operate independently. Loss patterns go undetected. Response is reactive.',
+      solution: 'Chain-wide visibility. Patterns become preventable. Loss drops dramatically.',
+    },
+    {
+      title: 'Industrial & Manufacturing',
+      challenge: 'Multiple sites. Equipment worth millions. Theft and tampering undetected.',
+      solution: 'Integrated security across all facilities. Asset tracking in real-time.',
+    },
+  ]
+
+  return (
+    <section className="py-20 px-4 bg-navy-900">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-balance">
+            Built for Every Sector
+          </h2>
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            Same operational platform. Different challenges. Same speed of response.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {solutions.map((sol, idx) => (
+            <motion.div
+              key={idx}
+              className="bg-card border border-border rounded-lg p-8 hover:border-primary/50 transition-colors"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: idx * 0.05 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-xl font-semibold text-primary mb-3">{sol.title}</h3>
+              <div className="mb-4">
+                <p className="text-xs uppercase tracking-wide text-gray-500 mb-2">The Challenge</p>
+                <p className="text-gray-300 text-sm">{sol.challenge}</p>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-wide text-primary mb-2">The Solution</p>
+                <p className="text-gray-300 text-sm">{sol.solution}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+const EngineeringPhilosophy = () => {
+  return (
+    <section className="py-20 px-4 bg-navy-800">
+      <div className="max-w-5xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 text-balance">
+            Why Lemtik Works
+          </h2>
+        </motion.div>
+
+        <div className="space-y-6">
+          {[
+            {
+              title: 'Information Speed',
+              desc: 'Data reaches operators in seconds, not hours. Alerts are automatic, not manual.',
+            },
+            {
+              title: 'Decision Quality',
+              desc: 'Context improves judgment. When operators see patterns and relationships, they decide better.',
+            },
+            {
+              title: 'Coordinated Action',
+              desc: 'All teams see the same incident, the same map, the same priorities. No confusion. No delay.',
+            },
+            {
+              title: 'Proven & Operational',
+              desc: 'Built by engineers who understand security. Tested in real operations. Deployed in Lagos.',
+            },
+          ].map((item, idx) => (
+            <motion.div
+              key={idx}
+              className="bg-card border border-border rounded-lg p-8 hover:border-primary/50 transition-colors"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-semibold text-primary mb-3">{item.title}</h3>
+              <p className="text-gray-300 text-lg leading-relaxed">{item.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="mt-12 bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-8 text-center"
+        >
+          <p className="text-gray-300 text-lg">
+            Security isn&apos;t about faster alerts. It&apos;s about better decisions made by coordinated teams with complete information.
+          </p>
+        </motion.div>
       </div>
     </section>
   )
@@ -458,26 +899,31 @@ const Solutions = () => {
 
 const Mission = () => {
   return (
-    <section className="py-24 px-4 bg-navy-900">
-      <div className="max-w-3xl mx-auto">
+    <section className="py-20 px-4 bg-navy-900">
+      <div className="max-w-4xl mx-auto text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-            An industrialised Africa needs a secured Africa.
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 text-balance">
+            Lemtik&apos;s Mission
           </h2>
-          <p className="text-lg text-gray-300 leading-relaxed mb-8">
-            A new generation of African builders is proving that critical infrastructure, defense, and security technology can be designed, built, and owned on this continent — not imported. Lemtik is building the civilian layer of that same mission: the intelligence and command systems protecting the everyday institutions, businesses, and citizens that make up African cities.
+
+          <p className="text-xl text-gray-300 mb-8 leading-relaxed text-balance">
+            Reduce the latency between alert and action by giving security teams one intelligent operational picture.
           </p>
+
+          <p className="text-lg text-gray-400 mb-12 text-balance">
+            African security teams deserve infrastructure that treats them as professionals. Not legacy software built for developed markets. Lemtik is built here, for here, by people who understand operations.
+          </p>
+
           <Link
             href="/mission"
             className="inline-flex items-center px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition-colors"
           >
-            Read our mission →
+            Learn More About Our Mission →
           </Link>
         </motion.div>
       </div>
@@ -485,49 +931,24 @@ const Mission = () => {
   )
 }
 
-const Traction = () => {
-  const stats = [
-    { label: 'Live OSINT Engine collecting Lagos threat intelligence daily' },
-    { label: '6/6 AI-powered services built and operational' },
-    { label: '39 Dashboard routes shipped' },
-    { label: '2026 Founded in Lagos' },
-  ]
-
-  return (
-    <section className="py-12 px-4 bg-gradient-to-b from-navy-800 to-navy-900 border-y border-border">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {stats.map((stat, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: idx * 0.05 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <p className="text-sm text-gray-400">{stat.label}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
 const FinalCTA = () => {
   return (
-    <section className="py-24 px-4 bg-navy-900">
-      <div className="max-w-3xl mx-auto text-center">
+    <section className="py-20 px-4 bg-navy-800">
+      <div className="max-w-4xl mx-auto text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-            See what command should feel like.
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 text-balance">
+            Ready to Reduce Response Time?
           </h2>
+
+          <p className="text-lg text-gray-400 mb-12 text-balance max-w-2xl mx-auto">
+            See how Lemtik transforms fragmented operations into coordinated command in a live demonstration.
+          </p>
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="px-8 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition-colors">
               Request a Demo
@@ -614,6 +1035,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
+
         <div className="border-t border-border pt-8">
           <p className="text-gray-400 text-sm text-center">
             © 2026 Lemtik Security. All rights reserved. Built in Lagos, Nigeria.
@@ -629,11 +1051,16 @@ export default function HomePage() {
     <main className="bg-background">
       <Hero />
       <Problem />
+      <Fragmentation />
+      <Convergence />
+      <CoreCapabilities />
       <IncidentSimulation />
-      <Services />
-      <Solutions />
+      <UnifiedCommandCentre />
+      <OperationalIntelligence />
+      <InfrastructureIntegration />
+      <Industries />
+      <EngineeringPhilosophy />
       <Mission />
-      <Traction />
       <FinalCTA />
       <DataTransparency />
       <Footer />
