@@ -140,7 +140,7 @@ const Problem = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
-            { stat: '3-5 min', label: 'Average response time with fragmented systems' },
+            { stat: '20-40 min', label: 'Average response time with fragmented systems' },
             { stat: '60%', label: 'Incidents never recorded for compliance' },
             { stat: '80%', label: 'Of sites unable to correlate threats across locations' },
           ].map((item, idx) => (
