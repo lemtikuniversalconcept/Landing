@@ -23,10 +23,10 @@ export async function sendContactNotification(data: ContactNotification) {
 
   const resend = new Resend(apiKey)
 
-  await resend.emails.send({
-    // Requires lemtik.com.ng to be a verified sending domain in Resend
-    // (Domains → Add Domain → add the DNS records it gives you) — sends
-    // will fail with an "unverified domain" error until that's done.
+  // resend.emails.send() resolves with { data, error } — it does not throw
+  // on failure (unverified domain, invalid recipient, rate limit, etc.), so
+  // that has to be checked explicitly or a failed send disappears silently.
+  const { error } = await resend.emails.send({
     from: 'Lemtik Security <noreply@lemtik.com.ng>',
     to: notifyEmail,
     replyTo: data.email,
@@ -43,4 +43,8 @@ export async function sendContactNotification(data: ContactNotification) {
       .filter(Boolean)
       .join('\n'),
   })
+
+  if (error) {
+    throw new Error(`Resend send failed: ${error.message}`)
+  }
 }
