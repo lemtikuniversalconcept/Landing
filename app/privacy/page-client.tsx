@@ -157,7 +157,7 @@ Phone: Available upon request`
         >
           <h3 className="text-xl font-bold mb-4">Questions about our privacy practices?</h3>
           <p className="text-muted-foreground mb-6">
-            We're committed to transparency. Contact us at privacy@lemtik.com for any privacy-related questions or concerns.
+            We're committed to transparency. Contact us at privacy@lemtik.com.ng for any privacy-related questions or concerns.
           </p>
           <Link
             href="/"
