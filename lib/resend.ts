@@ -24,10 +24,10 @@ export async function sendContactNotification(data: ContactNotification) {
   const resend = new Resend(apiKey)
 
   await resend.emails.send({
-    // Resend requires a verified sending domain for anything other than
-    // the account owner's own address — swap this once lemtik.com.ng is
-    // verified in the Resend dashboard (Domains → Add Domain → DNS records).
-    from: 'Lemtik Security <onboarding@resend.dev>',
+    // Requires lemtik.com.ng to be a verified sending domain in Resend
+    // (Domains → Add Domain → add the DNS records it gives you) — sends
+    // will fail with an "unverified domain" error until that's done.
+    from: 'Lemtik Security <noreply@lemtik.com.ng>',
     to: notifyEmail,
     replyTo: data.email,
     subject: `New contact form submission — ${data.name}`,
