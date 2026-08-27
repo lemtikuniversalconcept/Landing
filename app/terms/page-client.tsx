@@ -160,7 +160,7 @@ Phone: Available upon request`
         >
           <h3 className="text-xl font-bold mb-4">Questions about our terms?</h3>
           <p className="text-muted-foreground mb-6">
-            Please contact our legal team at legal@lemtik.com with any questions or concerns regarding these terms and conditions.
+            Please contact our legal team at legal@lemtik.com.ng with any questions or concerns regarding these terms and conditions.
           </p>
           <Link
             href="/"
