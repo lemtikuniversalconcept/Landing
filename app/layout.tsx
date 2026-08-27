@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { NavigationHeader } from '@/components/navigation-header'
+import { Footer } from '@/components/footer'
 import './globals.css'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
@@ -10,22 +11,34 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
+const siteUrl = 'https://lemtik.com.ng'
+const title = 'Lemtik Security - The Operating System for African Security'
+const description = 'Africa\'s first civilian-grade command and control platform. Real-time intelligence, automated dispatch, and autonomous response for security teams protecting estates, hotels, corporates, and governments.'
+
 export const metadata: Metadata = {
-  title: 'Lemtik Security - The Operating System for African Security',
-  description: 'Africa\'s first civilian-grade command and control platform. Real-time intelligence, automated dispatch, and autonomous response for security teams protecting estates, hotels, corporates, and governments.',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: title,
+    template: '%s | Lemtik Security',
+  },
+  description,
   generator: 'Lemtik Security',
   icons: {
-    icon: [
-      {
-        url: '/favicon.ico',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/favicon.ico',
-        type: 'image/svg+xml',
-      },
-    ],
+    icon: '/favicon.ico',
     apple: '/favicon.ico',
+  },
+  openGraph: {
+    title,
+    description,
+    url: siteUrl,
+    siteName: 'Lemtik Security',
+    locale: 'en_NG',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
   },
 }
 
@@ -46,6 +59,7 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         <NavigationHeader />
         {children}
+        <Footer />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

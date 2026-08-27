@@ -29,40 +29,28 @@ export function NavigationHeader() {
   ]
 
   const aiMenu = [
-    { label: 'Intelligence Engine', href: '/platform#intelligence' },
+    { label: 'Intelligence Engine', href: '/platform/intelligence' },
     { label: 'Inventory Service', href: '/platform#inventory' },
     { label: 'Route Calculator', href: '/platform#routing' },
     { label: 'Proximity Finder', href: '/platform#routing' },
-    { label: 'Autonomous Control', href: '/platform#autonomous' },
-    { label: 'Master AI Agent', href: '/platform#master' },
-    { label: 'How AI Works', href: '/platform#ai' },
+    { label: 'Autonomous Control', href: '/platform/autonomous' },
+    { label: 'Master AI Agent', href: '/platform/dispatch' },
+    { label: 'How AI Works', href: '/ai' },
   ]
 
   const companyMenu = [
     { label: 'About Lemtik', href: '/about' },
     { label: 'Our Mission', href: '/mission' },
     { label: 'Newsroom', href: '/newsroom' },
-    { label: 'Careers', href: '/careers' },
-    { label: 'Security', href: '/security' },
     { label: 'Contact Us', href: '/contact' },
   ]
 
-  const resourcesMenu = [
-    { label: 'Documentation', href: '/docs' },
-    { label: 'API Reference', href: '/api' },
-    { label: 'Customer Stories', href: '/newsroom' },
-    { label: 'Technical Blog', href: '/blog' },
-    { label: 'Security & Compliance', href: '/security' },
-    { label: 'FAQs', href: '/faq' },
-    { label: 'Contact Support', href: '/support' },
-  ]
-
-  const mainMenuItems = [
+  const mainMenuItems: { label: string; href: string; submenu?: typeof platformMenu }[] = [
     { label: 'Platform', href: '/platform', submenu: platformMenu },
     { label: 'Solutions', href: '/solutions', submenu: solutionsMenu },
     { label: 'AI', href: '/ai', submenu: aiMenu },
+    { label: 'Pricing', href: '/pricing' },
     { label: 'Company', href: '/about', submenu: companyMenu },
-    { label: 'Resources', href: '/docs', submenu: resourcesMenu },
   ]
 
   return (
