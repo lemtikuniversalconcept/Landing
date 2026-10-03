@@ -1,4 +1,4 @@
-# Lemtik Security Public Website - Architectural Audit Report
+# Lemtik Security Public Website - Architectural Audit Report.
 
 **Date:** July 2026  
 **Project:** Lemtik Security - African Defence Technology Platform  
