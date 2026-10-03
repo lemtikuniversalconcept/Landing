@@ -1,8 +1,7 @@
 import type { MetadataRoute } from 'next'
 import fs from 'fs'
 import path from 'path'
-
-const siteUrl = 'https://lemtik.com.ng'
+import { siteUrl } from '@/lib/seo'
 
 const staticRoutes = [
   { path: '/', priority: 1, changeFrequency: 'weekly' as const },

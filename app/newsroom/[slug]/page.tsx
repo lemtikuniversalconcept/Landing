@@ -6,6 +6,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import Image from 'next/image'
 import Link from 'next/link'
 import { SubscribeForm } from '@/components/subscribe-form'
+import { buildMetadata } from '@/lib/seo'
 
 interface ArticleProps {
   params: Promise<{ slug: string }>
@@ -35,10 +36,11 @@ export async function generateMetadata({ params }: ArticleProps) {
   const fileContent = fs.readFileSync(filePath, 'utf-8')
   const { data } = matter(fileContent)
 
-  return {
+  return buildMetadata({
     title: data.title,
-    description: data.excerpt
-  }
+    description: data.excerpt,
+    path: `/newsroom/${slug}`,
+  })
 }
 
 export default async function ArticlePage({ params }: ArticleProps) {

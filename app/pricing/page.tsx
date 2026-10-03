@@ -1,12 +1,13 @@
-import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Check } from 'lucide-react'
+import { buildMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: 'Pricing',
   description:
     'Lemtik Security pricing is built around your site count, team size, and integration needs. Talk to us for a plan scoped to your operation.',
-}
+  path: '/pricing',
+})
 
 const tiers = [
   {

@@ -8,6 +8,16 @@ const nextConfig = {
   turbopack: {
     root: fileURLToPath(new URL('.', import.meta.url)),
   },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.lemtik.com.ng' }],
+        destination: 'https://lemtik.com.ng/:path*',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default nextConfig

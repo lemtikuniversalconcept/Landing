@@ -1,11 +1,12 @@
-import type { Metadata } from 'next'
+import { buildMetadata } from '@/lib/seo'
 import { ContactForm } from '@/components/contact-form'
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: 'Contact',
   description:
     'Talk to Lemtik Security about protecting your estate, hotel, corporate office, or government facility with real-time command and control.',
-}
+  path: '/contact',
+})
 
 const SOLUTION_LABELS: Record<string, string> = {
   estates: 'Estates & Properties',

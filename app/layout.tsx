@@ -5,6 +5,7 @@ import { NavigationHeader } from '@/components/navigation-header'
 import { Footer } from '@/components/footer'
 import { FundingBanner } from '@/components/funding-banner'
 import { FundingPopup } from '@/components/funding-popup'
+import { siteUrl, siteName } from '@/lib/seo'
 import './globals.css'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
@@ -13,7 +14,6 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
-const siteUrl = 'https://lemtik.com.ng'
 const title = 'Lemtik Security - The Operating System for African Security'
 const description = 'Africa\'s first civilian-grade command and control platform. Real-time intelligence, automated dispatch, and autonomous response for security teams protecting estates, hotels, corporates, and governments.'
 
@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   },
   description,
   generator: 'Lemtik Security',
+  alternates: {
+    canonical: siteUrl,
+  },
   icons: {
     icon: '/favicon.ico',
     apple: '/favicon.ico',
@@ -33,7 +36,7 @@ export const metadata: Metadata = {
     title,
     description,
     url: siteUrl,
-    siteName: 'Lemtik Security',
+    siteName,
     locale: 'en_NG',
     type: 'website',
   },
