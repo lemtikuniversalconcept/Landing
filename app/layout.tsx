@@ -6,6 +6,8 @@ import { Footer } from '@/components/footer'
 import { FundingBanner } from '@/components/funding-banner'
 import { FundingPopup } from '@/components/funding-popup'
 import { siteUrl, siteName } from '@/lib/seo'
+import { organizationSchema, websiteSchema } from '@/lib/schema'
+import { JsonLd } from '@/components/json-ld'
 import './globals.css'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
@@ -27,10 +29,6 @@ export const metadata: Metadata = {
   generator: 'Lemtik Security',
   alternates: {
     canonical: siteUrl,
-  },
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/favicon.ico',
   },
   openGraph: {
     title,
@@ -62,6 +60,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} bg-background`}>
       <body className="font-sans antialiased">
+        <JsonLd data={organizationSchema()} />
+        <JsonLd data={websiteSchema()} />
         <FundingBanner />
         <FundingPopup />
         <NavigationHeader />

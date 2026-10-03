@@ -1,4 +1,6 @@
 import { buildMetadata } from '@/lib/seo'
+import { breadcrumbSchema } from '@/lib/schema'
+import { JsonLd } from '@/components/json-ld'
 import { AIPageClient } from './page-client'
 
 export const metadata = buildMetadata({
@@ -9,5 +11,13 @@ export const metadata = buildMetadata({
 })
 
 export default function AIPage() {
-  return <AIPageClient />
+  return (
+    <>
+      <JsonLd data={breadcrumbSchema([
+        { name: 'Home', path: '/' },
+        { name: 'AI Services', path: '/ai' },
+      ])} />
+      <AIPageClient />
+    </>
+  )
 }

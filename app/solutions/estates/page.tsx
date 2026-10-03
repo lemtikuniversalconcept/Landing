@@ -1,4 +1,6 @@
 import { buildMetadata } from '@/lib/seo'
+import { breadcrumbSchema } from '@/lib/schema'
+import { JsonLd } from '@/components/json-ld'
 import { EstatesSolutionClient } from './page-client'
 
 export const metadata = buildMetadata({
@@ -9,5 +11,14 @@ export const metadata = buildMetadata({
 })
 
 export default function EstatesSolution() {
-  return <EstatesSolutionClient />
+  return (
+    <>
+      <JsonLd data={breadcrumbSchema([
+        { name: 'Home', path: '/' },
+        { name: 'Solutions', path: '/solutions' },
+        { name: 'Estates & Properties', path: '/solutions/estates' },
+      ])} />
+      <EstatesSolutionClient />
+    </>
+  )
 }

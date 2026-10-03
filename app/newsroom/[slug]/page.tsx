@@ -7,6 +7,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { SubscribeForm } from '@/components/subscribe-form'
 import { buildMetadata } from '@/lib/seo'
+import { breadcrumbSchema } from '@/lib/schema'
+import { JsonLd } from '@/components/json-ld'
 
 interface ArticleProps {
   params: Promise<{ slug: string }>
@@ -57,6 +59,11 @@ export default async function ArticlePage({ params }: ArticleProps) {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <JsonLd data={breadcrumbSchema([
+        { name: 'Home', path: '/' },
+        { name: 'Newsroom', path: '/newsroom' },
+        { name: data.title, path: `/newsroom/${slug}` },
+      ])} />
       {/* Header Navigation */}
       <nav className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-lg">
         <div className="mx-auto max-w-4xl px-6 py-4">

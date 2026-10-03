@@ -1,4 +1,6 @@
 import { buildMetadata } from '@/lib/seo'
+import { breadcrumbSchema } from '@/lib/schema'
+import { JsonLd } from '@/components/json-ld'
 import { MissionPageClient } from './page-client'
 
 export const metadata = buildMetadata({
@@ -9,5 +11,13 @@ export const metadata = buildMetadata({
 })
 
 export default function MissionPage() {
-  return <MissionPageClient />
+  return (
+    <>
+      <JsonLd data={breadcrumbSchema([
+        { name: 'Home', path: '/' },
+        { name: 'Our Mission', path: '/mission' },
+      ])} />
+      <MissionPageClient />
+    </>
+  )
 }

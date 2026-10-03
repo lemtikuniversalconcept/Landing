@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { Check } from 'lucide-react'
 import { buildMetadata } from '@/lib/seo'
+import { breadcrumbSchema } from '@/lib/schema'
+import { JsonLd } from '@/components/json-ld'
 
 export const metadata = buildMetadata({
   title: 'Pricing',
@@ -54,6 +56,10 @@ const tiers = [
 export default function PricingPage() {
   return (
     <main className="bg-background min-h-screen">
+      <JsonLd data={breadcrumbSchema([
+        { name: 'Home', path: '/' },
+        { name: 'Pricing', path: '/pricing' },
+      ])} />
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-8 text-center">
         <span className="text-primary font-semibold text-sm uppercase tracking-wide">Pricing</span>
         <h1 className="text-4xl md:text-5xl font-bold mt-3 mb-4 text-balance">
