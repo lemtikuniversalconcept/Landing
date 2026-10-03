@@ -6,40 +6,14 @@ import Link from 'next/link'
 import { SubscribeForm } from '@/components/subscribe-form'
 
 export function NewsroomPageClient() {
-  const articles = [
-    {
-      slug: 'intelligence-engine-launch',
-      title: 'Intelligence Engine Now Live: 2000+ OSINT Sources in One Dashboard',
-      date: 'January 15, 2026',
-      category: 'Product Update',
-      excerpt: 'Our AI-powered intelligence aggregation system is now available to all Lemtik deployments. Automatically correlates security data from 2000+ sources in real-time.',
-      image: '/images/lagos-skyline.png'
-    },
-    {
-      slug: 'pilot-launch-announcement',
-      title: 'Lemtik Pilot Launches in Three Lagos Estates',
-      date: 'January 10, 2026',
-      category: 'Milestone',
-      excerpt: 'We\'re thrilled to announce the launch of our pilot program with three major residential estates in Lagos. Response times already down 62% in first week.',
-      image: '/images/lagos-estate.png'
-    },
-    {
-      slug: 'african-security-tech-movement',
-      title: 'Why Africa Needs African-Built Security Technology',
-      date: 'January 8, 2026',
-      category: 'Thought Leadership',
-      excerpt: 'The security infrastructure that works in the US doesn\'t work in Lagos. Here\'s why African cities need technology built by Africans, for African realities.',
-      image: '/images/lagos-corporate.png'
-    },
-    {
-      slug: 'autonomous-response-beta',
-      title: 'Autonomous Response System Now in Beta',
-      date: 'January 1, 2026',
-      category: 'Product Update',
-      excerpt: 'After months of testing, our autonomous infrastructure response system is ready for beta users. No more manual incident coordination—let the system orchestrate response.',
-      image: '/images/lagos-government.png'
-    }
-  ]
+  const articles: {
+    slug: string
+    title: string
+    date: string
+    category: string
+    excerpt: string
+    image: string
+  }[] = []
 
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
@@ -117,6 +91,15 @@ export function NewsroomPageClient() {
         >
           Latest Articles
         </motion.h2>
+
+        {articles.length === 0 && (
+          <motion.div {...fadeInUp} className="rounded-lg border border-border bg-muted/30 p-12 text-center">
+            <p className="text-muted-foreground">
+              We&apos;re pre-pilot and building in the open. Nothing to report yet &mdash;
+              subscribe above and we&apos;ll tell you the moment there is.
+            </p>
+          </motion.div>
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {articles.map((article, i) => (

@@ -3,6 +3,8 @@ import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { NavigationHeader } from '@/components/navigation-header'
 import { Footer } from '@/components/footer'
+import { FundingBanner } from '@/components/funding-banner'
+import { FundingPopup } from '@/components/funding-popup'
 import './globals.css'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
@@ -57,6 +59,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} bg-background`}>
       <body className="font-sans antialiased">
+        <FundingBanner />
+        <FundingPopup />
         <NavigationHeader />
         {children}
         <Footer />

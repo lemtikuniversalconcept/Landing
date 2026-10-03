@@ -92,7 +92,7 @@ const Hero = () => {
             variants={itemVariants}
             className="text-base md:text-lg text-gray-300 mb-8 text-balance max-w-3xl mx-auto leading-relaxed"
           >
-            When incidents happen, our AI-powered system cuts emergency response times by over 50% through instant threat analysis, optimal resource allocation, and coordinated action—replacing fragmented WhatsApp groups with a unified command center.
+            When incidents happen, our AI-powered system is built to cut emergency response times through instant threat analysis, optimal resource allocation, and coordinated action—replacing fragmented WhatsApp groups with a unified command center.
           </motion.p>
 
           <motion.div
