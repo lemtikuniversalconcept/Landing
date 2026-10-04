@@ -17,7 +17,8 @@ export function NavigationHeader() {
     { label: 'Routing & Dispatch', href: '/platform#routing' },
     { label: 'Inventory & Assets', href: '/platform#inventory' },
     { label: 'Operational Dashboards', href: '/platform#dashboards' },
-    { label: 'Security & Architecture', href: '/platform#security' },
+    { label: 'Integrations', href: '/platform/integrations' },
+    { label: 'Security & Compliance', href: '/platform/security' },
   ]
 
   const solutionsMenu = [
@@ -25,6 +26,9 @@ export function NavigationHeader() {
     { label: 'Hotels & Hospitality', href: '/solutions/hospitality' },
     { label: 'Corporate Offices', href: '/solutions/corporate' },
     { label: 'Government', href: '/solutions/government' },
+    { label: 'Critical Infrastructure', href: '/solutions/critical-infrastructure' },
+    { label: 'Retail & Commercial', href: '/solutions/retail' },
+    { label: 'Industrial & Manufacturing', href: '/solutions/industrial' },
     { label: 'View All Solutions', href: '/solutions' },
   ]
 

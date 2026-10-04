@@ -38,6 +38,30 @@ export function SolutionsHubClient() {
       href: '/solutions/government',
       color: 'from-orange-500 to-yellow-600',
     },
+    {
+      title: 'Critical Infrastructure',
+      shortDescription: 'Coordinated protection for power, water, and telecom sites. GPS-verified patrols across remote and unmanned facilities.',
+      fullDescription: 'Security for sites nobody is watching every minute.',
+      image: undefined,
+      href: '/solutions/critical-infrastructure',
+      color: 'from-cyan-600 to-slate-700',
+    },
+    {
+      title: 'Retail & Commercial',
+      shortDescription: 'Security operations for malls, plazas, and retail chains. Shared incident visibility across every tenant.',
+      fullDescription: 'One system for every tenant, every incident.',
+      image: undefined,
+      href: '/solutions/retail',
+      color: 'from-orange-600 to-rose-700',
+    },
+    {
+      title: 'Industrial & Manufacturing',
+      shortDescription: 'Security operations for factories, plants, and warehouses. Verified patrols across large floor plans.',
+      fullDescription: 'Coverage for every acre of the floor.',
+      image: undefined,
+      href: '/solutions/industrial',
+      color: 'from-slate-600 to-cyan-700',
+    },
   ]
 
   const containerVariants = {
@@ -112,13 +136,17 @@ export function SolutionsHubClient() {
                   <div className="group cursor-pointer h-full">
                     {/* Card Container */}
                     <div className="relative h-80 rounded-lg overflow-hidden mb-4">
-                      {/* Image Background */}
-                      <Image
-                        src={solution.image}
-                        alt={solution.title}
-                        fill
-                        className="object-cover"
-                      />
+                      {/* Background: photo when available, brand gradient otherwise */}
+                      {solution.image ? (
+                        <Image
+                          src={solution.image}
+                          alt={solution.title}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div className={`absolute inset-0 bg-gradient-to-br ${solution.color}`} />
+                      )}
 
                       {/* Dark Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />

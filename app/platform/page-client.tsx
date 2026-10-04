@@ -532,6 +532,11 @@ export function PlatformPageClient() {
               </motion.div>
             ))}
           </motion.div>
+          <div className="text-center mt-10">
+            <Link href="/platform/integrations" className="text-primary font-semibold hover:underline">
+              See the full integrations list →
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -614,7 +619,7 @@ export function PlatformPageClient() {
               { title: 'Data Isolation', desc: 'Customer data completely isolated and encrypted' },
               { title: 'Secure APIs', desc: 'OAuth 2.0 and API key management' },
               { title: 'High Availability', desc: 'Redundant infrastructure with automatic failover' },
-              { title: 'Compliance Roadmap', desc: 'GDPR, CCPA, and local security standards' },
+              { title: 'Compliance Roadmap', desc: 'NDPA-aligned today; GDPR and CCPA on the roadmap as we expand beyond Nigeria' },
               { title: 'Regular Audits', desc: 'Third-party security assessments and penetration testing' }
             ].map((item, i) => (
               <div key={i} className="bg-card border border-border rounded-lg p-6">
@@ -622,6 +627,11 @@ export function PlatformPageClient() {
                 <p className="text-sm text-muted-foreground">{item.desc}</p>
               </div>
             ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link href="/platform/security" className="text-primary font-semibold hover:underline">
+              See the full Security & Compliance page →
+            </Link>
           </div>
         </div>
       </section>
