@@ -1,6 +1,7 @@
 import { buildMetadata } from '@/lib/seo'
 import { breadcrumbSchema } from '@/lib/schema'
 import { JsonLd } from '@/components/json-ld'
+import { Breadcrumbs } from '@/components/breadcrumbs'
 import { IntelligencePageClient } from './page-client'
 
 export const metadata = buildMetadata({
@@ -10,14 +11,17 @@ export const metadata = buildMetadata({
   path: '/platform/intelligence',
 })
 
+const breadcrumbItems = [
+  { name: 'Home', path: '/' },
+  { name: 'Platform', path: '/platform' },
+  { name: 'Intelligence Engine', path: '/platform/intelligence' },
+]
+
 export default function IntelligencePage() {
   return (
     <>
-      <JsonLd data={breadcrumbSchema([
-        { name: 'Home', path: '/' },
-        { name: 'Platform', path: '/platform' },
-        { name: 'Intelligence Engine', path: '/platform/intelligence' },
-      ])} />
+      <JsonLd data={breadcrumbSchema(breadcrumbItems)} />
+      <Breadcrumbs items={breadcrumbItems} />
       <IntelligencePageClient />
     </>
   )

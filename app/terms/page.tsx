@@ -1,6 +1,7 @@
 import { buildMetadata } from '@/lib/seo'
 import { breadcrumbSchema } from '@/lib/schema'
 import { JsonLd } from '@/components/json-ld'
+import { Breadcrumbs } from '@/components/breadcrumbs'
 import { TermsPageClient } from './page-client'
 
 export const metadata = buildMetadata({
@@ -9,13 +10,16 @@ export const metadata = buildMetadata({
   path: '/terms',
 })
 
+const breadcrumbItems = [
+  { name: 'Home', path: '/' },
+  { name: 'Terms & Conditions', path: '/terms' },
+]
+
 export default function TermsPage() {
   return (
     <>
-      <JsonLd data={breadcrumbSchema([
-        { name: 'Home', path: '/' },
-        { name: 'Terms & Conditions', path: '/terms' },
-      ])} />
+      <JsonLd data={breadcrumbSchema(breadcrumbItems)} />
+      <Breadcrumbs items={breadcrumbItems} />
       <TermsPageClient />
     </>
   )

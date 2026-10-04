@@ -3,6 +3,7 @@ import { Check } from 'lucide-react'
 import { buildMetadata } from '@/lib/seo'
 import { breadcrumbSchema } from '@/lib/schema'
 import { JsonLd } from '@/components/json-ld'
+import { Breadcrumbs } from '@/components/breadcrumbs'
 
 export const metadata = buildMetadata({
   title: 'Pricing',
@@ -10,6 +11,11 @@ export const metadata = buildMetadata({
     'Lemtik Security pricing is built around your site count, team size, and integration needs. Talk to us for a plan scoped to your operation.',
   path: '/pricing',
 })
+
+const breadcrumbItems = [
+  { name: 'Home', path: '/' },
+  { name: 'Pricing', path: '/pricing' },
+]
 
 const tiers = [
   {
@@ -56,10 +62,8 @@ const tiers = [
 export default function PricingPage() {
   return (
     <main className="bg-background min-h-screen">
-      <JsonLd data={breadcrumbSchema([
-        { name: 'Home', path: '/' },
-        { name: 'Pricing', path: '/pricing' },
-      ])} />
+      <JsonLd data={breadcrumbSchema(breadcrumbItems)} />
+      <Breadcrumbs items={breadcrumbItems} />
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-8 text-center">
         <span className="text-primary font-semibold text-sm uppercase tracking-wide">Pricing</span>
         <h1 className="text-4xl md:text-5xl font-bold mt-3 mb-4 text-balance">

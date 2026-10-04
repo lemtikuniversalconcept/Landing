@@ -4,6 +4,24 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import {
+  Radio,
+  MessageCircle,
+  Video,
+  FileText,
+  Lock,
+  Car,
+  Target,
+  Search,
+  MapPin,
+  Link2,
+  CheckCircle,
+  BarChart3,
+  Megaphone,
+  Bell,
+  X,
+  Footprints,
+} from 'lucide-react'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -30,7 +48,7 @@ const Hero = () => {
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: 'url(/images/lagos-skyline.png)',
+          backgroundImage: 'url(/images/lemtik-lagos-skyline-security-operations.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -85,7 +103,7 @@ const Hero = () => {
             variants={itemVariants}
             className="text-lg md:text-xl text-gray-200 mb-4 text-balance max-w-3xl mx-auto leading-relaxed"
           >
-            <strong>Lemtik Security</strong> is Africa&apos;s first civilian-grade command and control platform. We provide real-time intelligence, automated dispatch, and autonomous response capabilities for security teams protecting estates, hotels, corporates, and governments across the continent.
+            <strong>Lemtik Security</strong> is Africa&apos;s first civilian-grade command and control platform — security management software built in Nigeria, providing real-time intelligence, automated dispatch, and autonomous response for security teams protecting estates, hotels, corporates, and governments across the continent.
           </motion.p>
 
           <motion.p
@@ -116,9 +134,10 @@ const Hero = () => {
 
         <motion.div
           variants={itemVariants}
-          className="bg-green-500/10 border border-green-500/30 rounded-lg px-4 py-2 inline-block text-sm text-green-300"
+          className="bg-green-500/10 border border-green-500/30 rounded-lg px-4 py-2 inline-flex items-center gap-2 text-sm text-green-300"
         >
-          🟢 OSINT Engine: Live · 6 AI Services Operational · Built in Lagos, Nigeria
+          <span aria-hidden="true" className="h-2 w-2 rounded-full bg-green-400" />
+          OSINT Engine: Live · 6 AI Services Operational · Built in Lagos, Nigeria
         </motion.div>
       </div>
     </section>
@@ -170,12 +189,12 @@ const Problem = () => {
 
 const Fragmentation = () => {
   const systems = [
-    { name: 'Radio', icon: '📡', x: '10%' },
-    { name: 'WhatsApp', icon: '💬', x: '25%' },
-    { name: 'CCTV', icon: '📹', x: '40%' },
-    { name: 'Logs', icon: '📋', x: '55%' },
-    { name: 'Access Control', icon: '🔐', x: '70%' },
-    { name: 'Vehicles', icon: '🚗', x: '85%' },
+    { name: 'Radio', icon: Radio, x: '10%' },
+    { name: 'WhatsApp', icon: MessageCircle, x: '25%' },
+    { name: 'CCTV', icon: Video, x: '40%' },
+    { name: 'Logs', icon: FileText, x: '55%' },
+    { name: 'Access Control', icon: Lock, x: '70%' },
+    { name: 'Vehicles', icon: Car, x: '85%' },
   ]
 
   return (
@@ -199,7 +218,7 @@ const Fragmentation = () => {
               transition={{ duration: 3, repeat: Infinity }}
               className="w-16 h-16 rounded-full border-2 border-red-500/50 flex items-center justify-center"
             >
-              <span className="text-2xl">❌</span>
+              <X aria-hidden="true" className="h-6 w-6 text-red-400" />
             </motion.div>
           </div>
 
@@ -217,7 +236,7 @@ const Fragmentation = () => {
                 repeat: Infinity,
               }}
             >
-              <div className="text-4xl">{sys.icon}</div>
+              <sys.icon aria-hidden="true" className="h-9 w-9 text-gray-300" />
               <span className="text-xs text-gray-400 text-center">{sys.name}</span>
               <div className="w-0.5 h-20 bg-gradient-to-b from-red-500/50 to-transparent" />
             </motion.div>
@@ -270,7 +289,7 @@ const Convergence = () => {
             transition={{ duration: 2, repeat: Infinity }}
             className="w-24 h-24 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center z-20"
           >
-            <span className="text-4xl">🎯</span>
+            <Target aria-hidden="true" className="h-9 w-9 text-primary" />
           </motion.div>
 
           {/* Converging lines */}
@@ -494,23 +513,27 @@ const IncidentSimulation = () => {
 
               {/* Animated visualization based on stage */}
               {stage === 1 && (
-                <div className="h-32 bg-gradient-to-b from-yellow-500/20 to-transparent rounded-lg flex items-center justify-center">
-                  <div className="text-4xl">🔍 Analyzing...</div>
+                <div className="h-32 bg-gradient-to-b from-yellow-500/20 to-transparent rounded-lg flex items-center justify-center gap-3">
+                  <Search aria-hidden="true" className="h-8 w-8 text-yellow-400" />
+                  <span className="text-2xl font-semibold">Analyzing...</span>
                 </div>
               )}
               {stage === 2 && (
-                <div className="h-32 bg-gradient-to-b from-blue-500/20 to-transparent rounded-lg flex items-center justify-center">
-                  <div className="text-4xl">📍 Route optimized</div>
+                <div className="h-32 bg-gradient-to-b from-blue-500/20 to-transparent rounded-lg flex items-center justify-center gap-3">
+                  <MapPin aria-hidden="true" className="h-8 w-8 text-blue-400" />
+                  <span className="text-2xl font-semibold">Route optimized</span>
                 </div>
               )}
               {stage === 3 && (
-                <div className="h-32 bg-gradient-to-b from-purple-500/20 to-transparent rounded-lg flex items-center justify-center">
-                  <div className="text-4xl">🔗 Teams connected</div>
+                <div className="h-32 bg-gradient-to-b from-purple-500/20 to-transparent rounded-lg flex items-center justify-center gap-3">
+                  <Link2 aria-hidden="true" className="h-8 w-8 text-purple-400" />
+                  <span className="text-2xl font-semibold">Teams connected</span>
                 </div>
               )}
               {stage === 4 && (
-                <div className="h-32 bg-gradient-to-b from-green-500/20 to-transparent rounded-lg flex items-center justify-center">
-                  <div className="text-4xl">✓ Resolved & recorded</div>
+                <div className="h-32 bg-gradient-to-b from-green-500/20 to-transparent rounded-lg flex items-center justify-center gap-3">
+                  <CheckCircle aria-hidden="true" className="h-8 w-8 text-green-400" />
+                  <span className="text-2xl font-semibold">Resolved & recorded</span>
                 </div>
               )}
             </motion.div>
@@ -649,17 +672,17 @@ const OperationalIntelligence = () => {
             {
               title: 'Entity Relationships',
               desc: 'Understand who, what, where, and when. The system connects incidents to people, locations, and patterns.',
-              icon: '🔗',
+              icon: Link2,
             },
             {
               title: 'Incident Correlation',
               desc: 'One theft becomes a pattern. Multiple break-ins become a campaign. The system sees what humans miss.',
-              icon: '🔍',
+              icon: Search,
             },
             {
               title: 'Pattern Detection',
               desc: 'Time, location, type of incident. The system learns normal and alerts when something changes.',
-              icon: '📊',
+              icon: BarChart3,
             },
           ].map((item, idx) => (
             <motion.div
@@ -670,7 +693,7 @@ const OperationalIntelligence = () => {
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               viewport={{ once: true }}
             >
-              <div className="text-4xl mb-4">{item.icon}</div>
+              <item.icon aria-hidden="true" className="h-9 w-9 mb-4 text-primary" />
               <h3 className="text-lg font-semibold text-primary mb-3">{item.title}</h3>
               <p className="text-gray-400 leading-relaxed">{item.desc}</p>
             </motion.div>
@@ -695,14 +718,14 @@ const OperationalIntelligence = () => {
 
 const InfrastructureIntegration = () => {
   const integrations = [
-    { name: 'CCTV', icon: '📹', status: 'Real-time feeds' },
-    { name: 'Access Control', icon: '🔐', status: 'Door/gate logs' },
-    { name: 'IoT Sensors', icon: '📡', status: 'Motion, intrusion' },
-    { name: 'GPS/Vehicles', icon: '🚗', status: 'Asset tracking' },
-    { name: 'Radio Systems', icon: '📢', status: 'Voice logging' },
-    { name: 'Guard Patrols', icon: '🚶', status: 'Manual input' },
-    { name: 'Alarms', icon: '🔔', status: 'Automated alerts' },
-    { name: 'Legacy Systems', icon: '🔗', status: 'Custom APIs' },
+    { name: 'CCTV', icon: Video, status: 'Real-time feeds' },
+    { name: 'Access Control', icon: Lock, status: 'Door/gate logs' },
+    { name: 'IoT Sensors', icon: Radio, status: 'Motion, intrusion' },
+    { name: 'GPS/Vehicles', icon: Car, status: 'Asset tracking' },
+    { name: 'Radio Systems', icon: Megaphone, status: 'Voice logging' },
+    { name: 'Guard Patrols', icon: Footprints, status: 'Manual input' },
+    { name: 'Alarms', icon: Bell, status: 'Automated alerts' },
+    { name: 'Legacy Systems', icon: Link2, status: 'Custom APIs' },
   ]
 
   return (
@@ -733,7 +756,7 @@ const InfrastructureIntegration = () => {
               transition={{ duration: 0.5, delay: idx * 0.05 }}
               viewport={{ once: true }}
             >
-              <div className="text-3xl mb-2">{int.icon}</div>
+              <int.icon aria-hidden="true" className="h-7 w-7 mb-2 mx-auto text-primary" />
               <h4 className="font-semibold text-white text-sm mb-1">{int.name}</h4>
               <p className="text-xs text-gray-400">{int.status}</p>
             </motion.div>

@@ -10,7 +10,7 @@ export function SolutionsHubClient() {
       title: 'Estates & Residential',
       shortDescription: 'Replace WhatsApp group updates with a unified command system that connects guards, tenants, and management in real-time.',
       fullDescription: 'Replace the WhatsApp group with a command system.',
-      image: '/images/lagos-estate.png',
+      image: '/images/lemtik-estate-security-management.png',
       href: '/solutions/estates',
       color: 'from-cyan-500 to-blue-600',
     },
@@ -18,7 +18,7 @@ export function SolutionsHubClient() {
       title: 'Hospitality',
       shortDescription: 'Protect guests and assets without slowing down operations. Incident management that doesn\'t interfere with service.',
       fullDescription: 'Protect guests without slowing down hospitality.',
-      image: '/images/lagos-hotel.png',
+      image: '/images/lemtik-hotel-security-management.png',
       href: '/solutions/hospitality',
       color: 'from-orange-500 to-red-600',
     },
@@ -26,7 +26,7 @@ export function SolutionsHubClient() {
       title: 'Corporate',
       shortDescription: 'Security operations teams get visibility they need. Executive dashboards. Incident records. Compliance audit trails.',
       fullDescription: 'Security operations your board can actually see.',
-      image: '/images/lagos-corporate.png',
+      image: '/images/lemtik-corporate-security-operations.png',
       href: '/solutions/corporate',
       color: 'from-cyan-500 to-purple-600',
     },
@@ -34,7 +34,7 @@ export function SolutionsHubClient() {
       title: 'Government & Public Safety',
       shortDescription: 'Civilian-grade C4I infrastructure built to scale across cities. OSINT integration. Autonomous response. Accountability records.',
       fullDescription: 'Civilian-grade C4I, built for public safety scale.',
-      image: '/images/lagos-government.png',
+      image: '/images/lemtik-government-public-safety.png',
       href: '/solutions/government',
       color: 'from-orange-500 to-yellow-600',
     },
@@ -134,7 +134,7 @@ export function SolutionsHubClient() {
 
                     {/* CTA */}
                     <div className="flex items-center gap-2 text-primary group-hover:text-primary/80 transition">
-                      <span className="font-medium">Learn more</span>
+                      <span className="font-medium">Learn more about {solution.title}</span>
                       <span className="transform group-hover:translate-x-1 transition">→</span>
                     </div>
                   </div>

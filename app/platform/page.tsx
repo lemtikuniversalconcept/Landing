@@ -1,6 +1,7 @@
 import { buildMetadata } from '@/lib/seo'
 import { softwareApplicationSchema, breadcrumbSchema } from '@/lib/schema'
 import { JsonLd } from '@/components/json-ld'
+import { Breadcrumbs } from '@/components/breadcrumbs'
 import { PlatformPageClient } from './page-client'
 
 export const metadata = buildMetadata({
@@ -10,14 +11,17 @@ export const metadata = buildMetadata({
   path: '/platform',
 })
 
+const breadcrumbItems = [
+  { name: 'Home', path: '/' },
+  { name: 'Platform', path: '/platform' },
+]
+
 export default function PlatformPage() {
   return (
     <>
       <JsonLd data={softwareApplicationSchema()} />
-      <JsonLd data={breadcrumbSchema([
-        { name: 'Home', path: '/' },
-        { name: 'Platform', path: '/platform' },
-      ])} />
+      <JsonLd data={breadcrumbSchema(breadcrumbItems)} />
+      <Breadcrumbs items={breadcrumbItems} />
       <PlatformPageClient />
     </>
   )

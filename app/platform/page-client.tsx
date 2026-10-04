@@ -3,7 +3,25 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ChevronDown, ArrowRight, Map, AlertCircle, Zap, Shield } from 'lucide-react'
+import {
+  ChevronDown,
+  ArrowRight,
+  Map,
+  AlertCircle,
+  Zap,
+  Shield,
+  Video,
+  Lock,
+  Construction,
+  DoorOpen,
+  Eye,
+  Radio,
+  MapPin,
+  Users,
+  Siren,
+  Lightbulb,
+  Megaphone,
+} from 'lucide-react'
 
 export function PlatformPageClient() {
   const [expandedModule, setExpandedModule] = useState<string | null>('unified')
@@ -144,18 +162,18 @@ export function PlatformPageClient() {
   ]
 
   const integrations = [
-    { name: 'CCTV Systems', icon: '📹' },
-    { name: 'Access Control', icon: '🔐' },
-    { name: 'Boom Barriers', icon: '🚧' },
-    { name: 'Smart Gates', icon: '🚪' },
-    { name: 'Biometric Doors', icon: '👁️' },
-    { name: 'IoT Sensors', icon: '📡' },
-    { name: 'GPS Tracking', icon: '📍' },
-    { name: 'Visitor Systems', icon: '👥' },
-    { name: 'Alarm Systems', icon: '🚨' },
-    { name: 'Emergency Lighting', icon: '💡' },
-    { name: 'Public Address', icon: '📢' },
-    { name: 'Radio Systems', icon: '📻' }
+    { name: 'CCTV Systems', icon: Video },
+    { name: 'Access Control', icon: Lock },
+    { name: 'Boom Barriers', icon: Construction },
+    { name: 'Smart Gates', icon: DoorOpen },
+    { name: 'Biometric Doors', icon: Eye },
+    { name: 'IoT Sensors', icon: Radio },
+    { name: 'GPS Tracking', icon: MapPin },
+    { name: 'Visitor Systems', icon: Users },
+    { name: 'Alarm Systems', icon: Siren },
+    { name: 'Emergency Lighting', icon: Lightbulb },
+    { name: 'Public Address', icon: Megaphone },
+    { name: 'Radio Systems', icon: Radio }
   ]
 
   const timelineEvents = [
@@ -509,7 +527,7 @@ export function PlatformPageClient() {
                 variants={itemVariants}
                 className="bg-background border border-border rounded-lg p-6 text-center hover:border-primary/50 transition-colors"
               >
-                <div className="text-3xl mb-3">{integration.icon}</div>
+                <integration.icon aria-hidden="true" className="h-8 w-8 mb-3 mx-auto text-primary" />
                 <p className="font-semibold text-sm">{integration.name}</p>
               </motion.div>
             ))}
@@ -695,6 +713,12 @@ export function PlatformPageClient() {
                 Talk With Our Team
               </Link>
             </div>
+            <p className="text-sm text-muted-foreground">
+              Not sure where to start?{' '}
+              <Link href="/solutions" className="text-primary underline underline-offset-2 hover:no-underline">
+                See how Lemtik fits your industry
+              </Link>
+            </p>
           </motion.div>
         </div>
       </section>

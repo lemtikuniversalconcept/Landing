@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 })
 
 const title = 'Lemtik Security - The Operating System for African Security'
-const description = 'Africa\'s first civilian-grade command and control platform. Real-time intelligence, automated dispatch, and autonomous response for security teams protecting estates, hotels, corporates, and governments.'
+const description = 'Africa\'s first civilian-grade command and control platform. Real-time intelligence and coordinated dispatch for security teams in Lagos.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

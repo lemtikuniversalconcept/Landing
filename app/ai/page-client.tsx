@@ -2,7 +2,21 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, CheckCircle, AlertCircle, Brain, Map, MessageSquare, Eye, Zap, Lock } from 'lucide-react'
+import {
+  ArrowRight,
+  CheckCircle,
+  AlertCircle,
+  Brain,
+  Map,
+  MessageSquare,
+  Eye,
+  Zap,
+  Lock,
+  BarChart3,
+  Lightbulb,
+  XCircle,
+  Ban,
+} from 'lucide-react'
 
 export function AIPageClient() {
   const containerVariants = {
@@ -180,12 +194,12 @@ export function AIPageClient() {
           {/* Flow Diagram */}
           <div className="space-y-4">
             {[
-              { step: 'Information', icon: '📊', desc: 'Multiple sources converge' },
-              { step: 'AI Analysis', icon: '🧠', desc: 'Pattern recognition & correlation' },
-              { step: 'Recommendations', icon: '💡', desc: 'Actionable insights generated' },
-              { step: 'Operator Review', icon: '👁️', desc: 'Human examines recommendation' },
-              { step: 'Approval', icon: '✓', desc: 'Operator authorizes action' },
-              { step: 'Operational Action', icon: '⚡', desc: 'Coordinated response executed' },
+              { step: 'Information', icon: BarChart3, desc: 'Multiple sources converge' },
+              { step: 'AI Analysis', icon: Brain, desc: 'Pattern recognition & correlation' },
+              { step: 'Recommendations', icon: Lightbulb, desc: 'Actionable insights generated' },
+              { step: 'Operator Review', icon: Eye, desc: 'Human examines recommendation' },
+              { step: 'Approval', icon: CheckCircle, desc: 'Operator authorizes action' },
+              { step: 'Operational Action', icon: Zap, desc: 'Coordinated response executed' },
             ].map((item, idx) => (
               <motion.div
                 key={idx}
@@ -342,7 +356,7 @@ export function AIPageClient() {
               <ul className="space-y-3">
                 {['Conversational', 'General knowledge', 'No context awareness', 'No workflow understanding', 'Requires setup'].map((item, idx) => (
                   <li key={idx} className="flex items-center gap-3 text-gray-300">
-                    <span className="text-red-500">✗</span> {item}
+                    <XCircle aria-hidden="true" size={20} className="text-red-500" /> {item}
                   </li>
                 ))}
               </ul>
@@ -386,12 +400,12 @@ export function AIPageClient() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             {[
-              { label: 'Makes arrests', icon: '🚫' },
-              { label: 'Makes disciplinary decisions', icon: '🚫' },
-              { label: 'Locks facilities autonomously', icon: '🚫' },
-              { label: 'Overrides human authority', icon: '🚫' },
-              { label: 'Replaces operators', icon: '🚫' },
-              { label: 'Hides its reasoning', icon: '🚫' },
+              { label: 'Makes arrests', icon: Ban },
+              { label: 'Makes disciplinary decisions', icon: Ban },
+              { label: 'Locks facilities autonomously', icon: Ban },
+              { label: 'Overrides human authority', icon: Ban },
+              { label: 'Replaces operators', icon: Ban },
+              { label: 'Hides its reasoning', icon: Ban },
             ].map((item, idx) => (
               <motion.div
                 key={idx}
@@ -401,7 +415,7 @@ export function AIPageClient() {
                 viewport={{ once: true }}
                 className="bg-card border border-border rounded-lg p-4 text-center"
               >
-                <span className="text-2xl mr-2">{item.icon}</span>
+                <item.icon aria-hidden="true" className="h-6 w-6 mb-2 mx-auto text-red-400" />
                 <p className="text-foreground font-semibold">{item.label}</p>
               </motion.div>
             ))}

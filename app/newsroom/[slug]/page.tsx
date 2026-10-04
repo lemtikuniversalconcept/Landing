@@ -9,6 +9,7 @@ import { SubscribeForm } from '@/components/subscribe-form'
 import { buildMetadata } from '@/lib/seo'
 import { breadcrumbSchema } from '@/lib/schema'
 import { JsonLd } from '@/components/json-ld'
+import { Breadcrumbs } from '@/components/breadcrumbs'
 
 interface ArticleProps {
   params: Promise<{ slug: string }>
@@ -57,13 +58,16 @@ export default async function ArticlePage({ params }: ArticleProps) {
   const fileContent = fs.readFileSync(filePath, 'utf-8')
   const { data, content } = matter(fileContent)
 
+  const breadcrumbItems = [
+    { name: 'Home', path: '/' },
+    { name: 'Newsroom', path: '/newsroom' },
+    { name: data.title, path: `/newsroom/${slug}` },
+  ]
+
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <JsonLd data={breadcrumbSchema([
-        { name: 'Home', path: '/' },
-        { name: 'Newsroom', path: '/newsroom' },
-        { name: data.title, path: `/newsroom/${slug}` },
-      ])} />
+      <JsonLd data={breadcrumbSchema(breadcrumbItems)} />
+      <Breadcrumbs items={breadcrumbItems} />
       {/* Header Navigation */}
       <nav className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-lg">
         <div className="mx-auto max-w-4xl px-6 py-4">
@@ -83,7 +87,13 @@ export default async function ArticlePage({ params }: ArticleProps) {
             {data.title}
           </h1>
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <span>{data.date}</span>
+            <span>Published {data.date}</span>
+            {data.lastUpdated && data.lastUpdated !== data.date && (
+              <>
+                <span>•</span>
+                <span>Last updated {data.lastUpdated}</span>
+              </>
+            )}
             <span>•</span>
             <span>By {data.author}</span>
           </div>

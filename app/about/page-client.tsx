@@ -10,31 +10,31 @@ export function AboutPageClient() {
       name: 'Tunde Adeyemi',
       role: 'Founder & CEO',
       bio: 'Security infrastructure builder. Previously built ops systems for African startups.',
-      image: '/images/team-founder-ceo.png'
+      image: '/images/lemtik-team-founder-ceo.png'
     },
     {
       name: 'Chisom Okoro',
       role: 'Lead Software Engineer',
       bio: 'Systems architect focused on real-time dispatch and autonomous response logic.',
-      image: '/images/team-lead-engineer.png'
+      image: '/images/lemtik-team-lead-engineer.png'
     },
     {
       name: 'Amara Okonkwo',
       role: 'Frontend UI Engineer',
       bio: 'Design engineer obsessed with clarity under pressure. Makes command systems beautiful.',
-      image: '/images/team-frontend-engineer.png'
+      image: '/images/lemtik-team-frontend-engineer.png'
     },
     {
       name: 'Zainab Hassan',
       role: 'Growth & Product Marketing',
       bio: 'Takes complex security ops and makes them understandable to buyers and users.',
-      image: '/images/team-growth-marketing.png'
+      image: '/images/lemtik-team-growth-marketing.png'
     },
     {
       name: 'Oluwaseun Adebayo',
       role: 'Strategy & Operations',
       bio: 'Builds the infrastructure and partnerships that let Lemtik scale across Africa.',
-      image: '/images/team-operations.png'
+      image: '/images/lemtik-team-operations-lead.png'
     }
   ]
 

@@ -19,7 +19,7 @@ export function EstatesSolutionClient() {
       {/* Hero Section */}
       <section className="relative h-96 overflow-hidden">
         <Image
-          src="/images/lagos-estate.png"
+          src="/images/lemtik-estate-security-management.png"
           alt="Estates security management"
           fill
           className="object-cover"
@@ -201,12 +201,20 @@ export function EstatesSolutionClient() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition"
-            >
-              Request a Demo
-            </Link>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition"
+              >
+                Request a Demo
+              </Link>
+              <Link
+                href="/platform"
+                className="inline-flex items-center gap-2 px-8 py-4 border border-border text-foreground font-semibold rounded-lg hover:bg-muted transition"
+              >
+                Explore the full platform
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

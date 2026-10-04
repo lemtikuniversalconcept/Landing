@@ -19,7 +19,7 @@ export function HospitalitySolutionClient() {
       {/* Hero Section */}
       <section className="relative h-96 overflow-hidden">
         <Image
-          src="/images/lagos-hotel.png"
+          src="/images/lemtik-hotel-security-management.png"
           alt="Hospitality security management"
           fill
           className="object-cover"
@@ -201,12 +201,20 @@ export function HospitalitySolutionClient() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Link
-              href="/contact?solution=hospitality"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition"
-            >
-              Book a Demo (Hospitality)
-            </Link>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Link
+                href="/contact?solution=hospitality"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition"
+              >
+                Book a Demo (Hospitality)
+              </Link>
+              <Link
+                href="/platform"
+                className="inline-flex items-center gap-2 px-8 py-4 border border-border text-foreground font-semibold rounded-lg hover:bg-muted transition"
+              >
+                Explore the full platform
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

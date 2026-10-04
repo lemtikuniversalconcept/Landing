@@ -1,6 +1,7 @@
 import { buildMetadata } from '@/lib/seo'
 import { breadcrumbSchema } from '@/lib/schema'
 import { JsonLd } from '@/components/json-ld'
+import { Breadcrumbs } from '@/components/breadcrumbs'
 import { ContactForm } from '@/components/contact-form'
 
 export const metadata = buildMetadata({
@@ -9,6 +10,11 @@ export const metadata = buildMetadata({
     'Talk to Lemtik Security about protecting your estate, hotel, corporate office, or government facility with real-time command and control.',
   path: '/contact',
 })
+
+const breadcrumbItems = [
+  { name: 'Home', path: '/' },
+  { name: 'Contact', path: '/contact' },
+]
 
 const SOLUTION_LABELS: Record<string, string> = {
   estates: 'Estates & Properties',
@@ -27,10 +33,8 @@ export default async function ContactPage({
 
   return (
     <main className="bg-background min-h-screen">
-      <JsonLd data={breadcrumbSchema([
-        { name: 'Home', path: '/' },
-        { name: 'Contact', path: '/contact' },
-      ])} />
+      <JsonLd data={breadcrumbSchema(breadcrumbItems)} />
+      <Breadcrumbs items={breadcrumbItems} />
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
         <div className="text-center mb-12">
           <span className="text-primary font-semibold text-sm uppercase tracking-wide">
