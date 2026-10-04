@@ -1,0 +1,44 @@
+---
+title: How to Build a Compliance Audit Trail for Security Operations
+date: October 2026
+category: Guide
+excerpt: An audit trail that can be edited after the fact isn't an audit trail — it's a document. Here's what an actually defensible one requires.
+image: /images/lemtik-corporate-security-operations.png
+author: The Lemtik Team
+---
+
+"We keep records" and "we have an audit trail" sound similar but mean different things. A logbook is records. An audit trail is records plus a specific set of guarantees about those records — and most security operations have the first without the second.
+
+## Start with what the audit trail has to survive
+
+An audit trail only matters in a dispute: an insurance claim, a legal proceeding, a disagreement about whether a guard actually responded in time. In every one of those situations, the first question anyone asks is "could this have been changed after the fact?" If the honest answer is yes, the record's value in that dispute drops close to zero, no matter how detailed it is.
+
+Design backward from that question. Everything below exists to make the answer no.
+
+## 1. Every entry needs a timestamp nobody can edit
+
+Not a timestamp a user types in — a timestamp the system generates at the moment of creation, stored separately from anything a user can touch. If "when did this happen" is a text field someone fills in, it's not a record, it's a claim.
+
+## 2. Entries should be append-only, not editable
+
+Once a patrol check-in or incident report is logged, it should not be possible to go back and change its content — not by the person who created it, and not by an administrator. If a correction is genuinely needed, the right model is a new entry that references and amends the old one, with both preserved. At the database level, this usually means a hard rule — a trigger or permission that blocks UPDATE and DELETE on the table entirely — not just a policy that says "please don't edit old records."
+
+## 3. Attribute every entry to a specific person, not a shared login
+
+"Security Team" logged an entry tells you nothing. A specific person, authenticated specifically as themselves, is what makes an audit trail attributable — and what makes it meaningless to dispute "someone else must have done that."
+
+## 4. Capture the decision, not just the outcome
+
+"Incident resolved" is an outcome. An actual audit trail captures what was decided, by whom, and on what basis — which officer was dispatched and why, what the recommendation was if one was generated, and whether a human approved it. If your system only logs final states, you can't reconstruct what actually happened when it's questioned months later.
+
+## 5. Make the trail exportable, not just viewable
+
+If the only way to produce your records for a regulator or insurer is a screenshot of a dashboard, you don't have a usable audit trail, you have an internal tool. Build in a clean export — PDF or structured data — from day one.
+
+## 6. Test it by trying to break it
+
+The real test of an audit trail isn't whether it looks complete. It's whether someone with full administrative access to the system can go in and quietly alter a past record. If they can, the trail is only as trustworthy as every person who's ever had that access — which is not a guarantee you can make to an insurer or a court.
+
+---
+
+*Lemtik's audit log is append-only at the database level — enforced by a rule that blocks edits and deletions outright, not a policy that asks nicely. [See Security & Compliance](/platform/security).*

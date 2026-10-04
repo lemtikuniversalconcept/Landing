@@ -46,6 +46,9 @@ export function NavigationHeader() {
     { label: 'About Lemtik', href: '/about' },
     { label: 'Our Mission', href: '/mission' },
     { label: 'Newsroom', href: '/newsroom' },
+    { label: 'Guides & Checklists', href: '/guides' },
+    { label: 'FAQ', href: '/faq' },
+    { label: 'Glossary', href: '/glossary' },
     { label: 'Contact Us', href: '/contact' },
   ]
 

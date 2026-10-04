@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className="bg-card border-t border-border py-12 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
           <div>
             <h3 className="font-bold text-white mb-4">Lemtik Security</h3>
             <p className="text-muted-foreground text-sm">
@@ -15,8 +15,19 @@ export function Footer() {
             <h4 className="font-semibold text-white mb-4">Product</h4>
             <ul className="space-y-2 text-muted-foreground text-sm">
               <li><Link href="/platform" className="hover:text-primary transition-colors">Platform</Link></li>
+              <li><Link href="/platform/integrations" className="hover:text-primary transition-colors">Integrations</Link></li>
+              <li><Link href="/platform/security" className="hover:text-primary transition-colors">Security</Link></li>
               <li><Link href="/solutions" className="hover:text-primary transition-colors">Solutions</Link></li>
               <li><Link href="/pricing" className="hover:text-primary transition-colors">Pricing</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-semibold text-white mb-4">Resources</h4>
+            <ul className="space-y-2 text-muted-foreground text-sm">
+              <li><Link href="/newsroom" className="hover:text-primary transition-colors">Newsroom</Link></li>
+              <li><Link href="/guides" className="hover:text-primary transition-colors">Guides & Checklists</Link></li>
+              <li><Link href="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
+              <li><Link href="/glossary" className="hover:text-primary transition-colors">Glossary</Link></li>
             </ul>
           </div>
           <div>
@@ -24,7 +35,6 @@ export function Footer() {
             <ul className="space-y-2 text-muted-foreground text-sm">
               <li><Link href="/about" className="hover:text-primary transition-colors">About</Link></li>
               <li><Link href="/mission" className="hover:text-primary transition-colors">Mission</Link></li>
-              <li><Link href="/newsroom" className="hover:text-primary transition-colors">Newsroom</Link></li>
               <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
             </ul>
           </div>
