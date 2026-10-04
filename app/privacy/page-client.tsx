@@ -63,7 +63,11 @@ All third parties are contractually obligated to maintain the confidentiality an
 • Withdraw consent
 • Lodge complaints with data protection authorities
 
-To exercise these rights, contact us at privacy@lemtik.com.`
+To exercise these rights, contact us at privacy@lemtik.com.ng.`
+    },
+    {
+      title: '6a. Nigeria Data Protection Act (NDPA)',
+      content: `For data generated in Nigeria, the Nigeria Data Protection Act (NDPA) is the primary legal framework governing how we collect, use, and protect your personal information — this is the standard we design against first, not an international framework adapted after the fact. Where we handle data from other jurisdictions, applicable local data protection law also applies.`
     },
     {
       title: '7. Cookies',
@@ -87,9 +91,8 @@ We use both session and persistent cookies for authentication, preferences, and 
       title: '11. Contact Us',
       content: `If you have questions about this Privacy Policy or our privacy practices, please contact us:
 
-Email: privacy@lemtik.com
-Address: Lagos, Nigeria
-Phone: Available upon request`
+Email: privacy@lemtik.com.ng
+Address: Lagos, Nigeria`
     }
   ]
 
@@ -127,7 +130,7 @@ Phone: Available upon request`
           transition={{ duration: 0.8, delay: 0.1 }}
           className="text-lg text-muted-foreground"
         >
-          Last Updated: July 2026
+          Last Updated: October 2026
         </motion.p>
       </section>
 

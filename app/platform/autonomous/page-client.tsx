@@ -102,13 +102,13 @@ export function AutonomousPageClient() {
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
-                metric: 'Seconds saved per incident',
-                value: '8-12',
-                explanation: 'Automated infrastructure responses eliminate manual coordination delays'
+                metric: 'Manual coordination',
+                value: 'Removed',
+                explanation: 'Automated infrastructure responses skip the manual coordination step entirely'
               },
               {
                 metric: 'Route clearance time',
-                value: 'Instant',
+                value: 'Immediate',
                 explanation: 'Traffic lights and barriers clear before responder arrives'
               },
               {
@@ -117,8 +117,8 @@ export function AutonomousPageClient() {
                 explanation: 'All systems activate in parallel, not sequentially'
               },
               {
-                metric: 'Operator relief',
-                value: '40%',
+                metric: 'Operator focus',
+                value: 'On the incident',
                 explanation: 'Less manual coordination required, more attention to incident command'
               }
             ].map((item, i) => (

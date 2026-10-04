@@ -37,7 +37,7 @@ export function TermsPageClient() {
       title: '6. Materials and Content',
       content: `Lemtik Security has not reviewed all of the sites linked to our website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Lemtik Security of the site. Use of any such linked website is at the user's own risk.
 
-If you believe any materials on our website infringe your copyright, please contact us immediately at legal@lemtik.com.`
+If you believe any materials on our website infringe your copyright, please contact us immediately at legal@lemtik.com.ng.`
     },
     {
       title: '7. Modifications',
@@ -90,9 +90,8 @@ If you believe any materials on our website infringe your copyright, please cont
       title: '15. Contact Information',
       content: `If you have any questions about these Terms and Conditions, please contact us:
 
-Email: legal@lemtik.com
-Address: Lagos, Nigeria
-Phone: Available upon request`
+Email: legal@lemtik.com.ng
+Address: Lagos, Nigeria`
     }
   ]
 
@@ -130,7 +129,7 @@ Phone: Available upon request`
           transition={{ duration: 0.8, delay: 0.1 }}
           className="text-lg text-muted-foreground"
         >
-          Last Updated: July 2026
+          Last Updated: October 2026
         </motion.p>
       </section>
 

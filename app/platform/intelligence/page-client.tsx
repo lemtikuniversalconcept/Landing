@@ -21,7 +21,9 @@ export function IntelligencePageClient() {
               <span className="text-primary">Understanding Threats in Real Time</span>
             </h1>
             <p className="mt-8 text-lg text-muted-foreground max-w-3xl mx-auto">
-              The Intelligence Engine continuously monitors 2000+ open and darknet sources, analyzing threats across 15 risk dimensions. Every incident alert arrives pre-scored and contextualized.
+              The Intelligence Engine monitors open-source feeds and correlates them against incoming
+              reports, so an incident alert arrives with relevant context already attached instead of
+              requiring an operator to go looking for it.
             </p>
           </motion.div>
         </div>
@@ -39,10 +41,10 @@ export function IntelligencePageClient() {
             >
               <h3 className="text-2xl font-bold mb-6">Continuous Monitoring</h3>
               <p className="text-muted-foreground mb-6">
-                The Intelligence Engine ingests data from 2000+ sources including:
+                The Intelligence Engine ingests open-source signal including:
               </p>
               <ul className="space-y-3">
-                {['Public news feeds', 'Social media monitoring', 'Darknet markets', 'Security forums', 'Police databases', 'Emergency services', 'Community reports', 'Government warnings'].map((item, i) => (
+                {['Public news feeds', 'Social media monitoring', 'Security forums', 'Community reports', 'Government warnings'].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <span className="text-primary mt-1">•</span>
                     <span className="text-foreground">{item}</span>
@@ -67,24 +69,15 @@ export function IntelligencePageClient() {
       {/* Risk Scoring */}
       <section className="border-b border-border bg-card px-6 py-24">
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold text-center mb-12">15-Dimension Risk Scoring</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Multi-Factor Risk Scoring</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { dimension: 'Threat Type', desc: 'What kind of threat is this?' },
               { dimension: 'Location Specificity', desc: 'How targeted to your area?' },
               { dimension: 'Temporal Urgency', desc: 'How imminent is this threat?' },
-              { dimension: 'Target Institution', desc: 'Which organization is at risk?' },
-              { dimension: 'Attack Vector', desc: 'How would this threat manifest?' },
               { dimension: 'Historical Correlation', desc: 'Has this happened before?' },
               { dimension: 'Source Reliability', desc: 'How trustworthy is the source?' },
-              { dimension: 'Intent Clarity', desc: 'Is this a credible threat?' },
-              { dimension: 'Resource Requirements', desc: 'What would this require?' },
-              { dimension: 'Regional Pattern', desc: 'Does this match regional trends?' },
-              { dimension: 'Seasonal Context', desc: 'Is this contextually normal?' },
-              { dimension: 'Actor Profile', desc: 'Who would do this?' },
               { dimension: 'Escalation Risk', desc: 'Could this worsen?' },
-              { dimension: 'Cascade Impact', desc: 'What else might this trigger?' },
-              { dimension: 'Recovery Difficulty', desc: 'How hard to recover from?' }
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -104,12 +97,12 @@ export function IntelligencePageClient() {
       {/* Results */}
       <section className="border-b border-border bg-background px-6 py-24">
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold text-center mb-12">The Results</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">What This Changes</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { stat: '73%', label: 'Reduction in false alarms' },
-              { stat: 'Real-time', label: 'Threat classification' },
-              { stat: 'Pre-scored', label: 'Every incident arrives classified' }
+              { stat: 'Real-time', label: 'Threat classification as reports come in' },
+              { stat: 'Pre-scored', label: 'Every incident arrives with context attached' },
+              { stat: 'No manual lookup', label: 'Operators aren\'t searching for context mid-incident' }
             ].map((item, i) => (
               <motion.div
                 key={i}

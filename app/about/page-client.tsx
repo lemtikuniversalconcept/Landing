@@ -1,41 +1,40 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import Link from 'next/link'
 
 export function AboutPageClient() {
   const teamMembers = [
     {
-      name: 'Tunde Adeyemi',
-      role: 'Founder & CEO',
-      bio: 'Security infrastructure builder. Previously built ops systems for African startups.',
-      image: '/images/lemtik-team-founder-ceo.png'
+      name: 'Amisu Abdulsemiu Omotoyosi',
+      role: 'Founder & CTO',
+      bio: 'Leads architecture and AI/ML across the platform.',
     },
     {
-      name: 'Chisom Okoro',
-      role: 'Lead Software Engineer',
-      bio: 'Systems architect focused on real-time dispatch and autonomous response logic.',
-      image: '/images/lemtik-team-lead-engineer.png'
+      name: 'Ridwanulah Pedro',
+      role: 'Co-Founder & CEO',
+      bio: 'Leads company strategy and operations.',
     },
     {
-      name: 'Amara Okonkwo',
-      role: 'Frontend UI Engineer',
-      bio: 'Design engineer obsessed with clarity under pressure. Makes command systems beautiful.',
-      image: '/images/lemtik-team-frontend-engineer.png'
+      name: 'Onovwiome Honourable Onome',
+      role: 'AI/ML Data Engineer',
+      bio: 'Builds the data and machine-learning layers behind the platform.',
     },
     {
-      name: 'Zainab Hassan',
-      role: 'Growth & Product Marketing',
-      bio: 'Takes complex security ops and makes them understandable to buyers and users.',
-      image: '/images/lemtik-team-growth-marketing.png'
+      name: 'Benita Ochokoma',
+      role: 'Product Manager & Legal',
+      bio: 'Leads product direction and legal/compliance matters.',
     },
     {
-      name: 'Oluwaseun Adebayo',
-      role: 'Strategy & Operations',
-      bio: 'Builds the infrastructure and partnerships that let Lemtik scale across Africa.',
-      image: '/images/lemtik-team-operations-lead.png'
-    }
+      name: 'Mariana Olufunke',
+      role: 'Customer Outreach & Research',
+      bio: 'Leads customer conversations and market research.',
+    },
+    {
+      name: 'Susan Moyinoluwa David',
+      role: 'Growth & Marketing Lead',
+      bio: 'Leads growth and marketing.',
+    },
   ]
 
   const fadeInUp = {
@@ -88,7 +87,7 @@ export function AboutPageClient() {
             <div className="text-sm text-muted-foreground">Headquarters</div>
           </div>
           <div>
-            <div className="text-3xl font-bold text-primary mb-2">5</div>
+            <div className="text-3xl font-bold text-primary mb-2">6</div>
             <div className="text-sm text-muted-foreground">Team Members</div>
           </div>
           <div>
@@ -101,6 +100,13 @@ export function AboutPageClient() {
           <h2 className="text-xl font-bold mb-4">Our Mission</h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
             Lemtik is the operating system for civilian security across Africa. We build technology that gives security teams the tools they need to respond faster, coordinate better, and protect more people. Designed in Lagos, for every African city.
+          </p>
+        </motion.div>
+
+        <motion.div {...fadeInUp} className="mt-6 p-6 border border-border rounded-lg">
+          <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-2">Registration Status</h2>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Registered with SMEDAN. CAC incorporation is in progress.
           </p>
         </motion.div>
       </section>
@@ -124,13 +130,14 @@ export function AboutPageClient() {
               viewport={{ once: true }}
               className="group"
             >
-              <div className="relative w-full h-64 mb-4 overflow-hidden rounded-lg bg-muted">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
+              <div className="relative w-full h-64 mb-4 overflow-hidden rounded-lg bg-muted flex items-center justify-center">
+                <span className="text-5xl font-bold text-primary/40" aria-hidden="true">
+                  {member.name
+                    .split(' ')
+                    .slice(0, 2)
+                    .map((part) => part[0])
+                    .join('')}
+                </span>
               </div>
               <h3 className="text-xl font-bold mb-1">{member.name}</h3>
               <p className="text-sm text-primary font-semibold mb-3">{member.role}</p>

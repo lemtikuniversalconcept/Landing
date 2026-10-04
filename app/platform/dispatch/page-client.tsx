@@ -218,9 +218,9 @@ export function DispatchPageClient() {
           <h2 className="text-3xl font-bold text-center mb-12">Impact</h2>
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { metric: 'Sub-2-second', label: 'decision recommendations' },
-              { metric: '50%+', label: 'faster response time' },
-              { metric: '99.2%', label: 'system uptime' },
+              { metric: 'Seconds, not minutes', label: 'for a decision recommendation to reach the operator' },
+              { metric: 'Built for redundancy', label: 'no single point of failure in the response path' },
+              { metric: 'Always reviewed', label: 'every recommendation seen by a human before it\'s actioned' },
               { metric: '100%', label: 'human authority preserved' }
             ].map((item, i) => (
               <motion.div

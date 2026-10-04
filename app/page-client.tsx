@@ -165,9 +165,9 @@ const Problem = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
-            { stat: '20-40 min', label: 'Average response time with fragmented systems' },
-            { stat: '60%', label: 'Incidents never recorded for compliance' },
-            { stat: '80%', label: 'Of sites unable to correlate threats across locations' },
+            { stat: 'Minutes lost', label: 'Every relay through a chat group adds delay nobody measures' },
+            { stat: 'Rarely consistent', label: 'Without a system, incident records depend on who wrote what down' },
+            { stat: 'No shared view', label: 'Each site, each guard, sees only their own slice of what\'s happening' },
           ].map((item, idx) => (
             <motion.div
               key={idx}
