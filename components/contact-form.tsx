@@ -5,14 +5,6 @@ import { submitContactForm, type FormState } from '@/app/actions'
 
 const initialState: FormState = { status: 'idle' }
 
-const SOLUTIONS = [
-  { value: '', label: 'General inquiry' },
-  { value: 'estates', label: 'Estates & Properties' },
-  { value: 'hospitality', label: 'Hotels & Hospitality' },
-  { value: 'corporate', label: 'Corporate Offices' },
-  { value: 'government', label: 'Government' },
-]
-
 export function ContactForm({ defaultSolution = '' }: { defaultSolution?: string }) {
   const [state, formAction, pending] = useActionState(submitContactForm, initialState)
 
@@ -38,6 +30,7 @@ export function ContactForm({ defaultSolution = '' }: { defaultSolution?: string
         className="hidden"
         aria-hidden="true"
       />
+      <input type="hidden" name="solution" value={defaultSolution} />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
@@ -68,49 +61,17 @@ export function ContactForm({ defaultSolution = '' }: { defaultSolution?: string
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div>
-          <label htmlFor="company" className="block text-sm font-medium text-foreground mb-1.5">
-            Company <span className="text-muted-foreground font-normal">(optional)</span>
-          </label>
-          <input
-            id="company"
-            name="company"
-            type="text"
-            className="w-full px-4 py-2.5 bg-background border border-border rounded text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-            placeholder="Your organisation"
-          />
-        </div>
-        <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-1.5">
-            Phone <span className="text-muted-foreground font-normal">(optional)</span>
-          </label>
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            className="w-full px-4 py-2.5 bg-background border border-border rounded text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-            placeholder="+234..."
-          />
-        </div>
-      </div>
-
       <div>
-        <label htmlFor="solution" className="block text-sm font-medium text-foreground mb-1.5">
-          What are you interested in?
+        <label htmlFor="company" className="block text-sm font-medium text-foreground mb-1.5">
+          Company <span className="text-muted-foreground font-normal">(optional)</span>
         </label>
-        <select
-          id="solution"
-          name="solution"
-          defaultValue={defaultSolution}
-          className="w-full px-4 py-2.5 bg-background border border-border rounded text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-        >
-          {SOLUTIONS.map((s) => (
-            <option key={s.value} value={s.value}>
-              {s.label}
-            </option>
-          ))}
-        </select>
+        <input
+          id="company"
+          name="company"
+          type="text"
+          className="w-full px-4 py-2.5 bg-background border border-border rounded text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+          placeholder="Your organisation"
+        />
       </div>
 
       <div>

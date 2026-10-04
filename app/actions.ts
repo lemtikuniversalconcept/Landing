@@ -1,7 +1,7 @@
 'use server'
 
 import { getSupabaseClient } from '@/lib/supabase'
-import { sendContactNotification } from '@/lib/resend'
+import { sendContactNotification, sendContactConfirmation } from '@/lib/resend'
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -45,6 +45,9 @@ export async function submitContactForm(_prevState: FormState, formData: FormDat
 
     await sendContactNotification({ name, email, company, phone, solution, message }).catch((err) => {
       console.error('[contact] notification email failed', err)
+    })
+    await sendContactConfirmation({ name, email }).catch((err) => {
+      console.error('[contact] confirmation email failed', err)
     })
 
     return { status: 'success' }

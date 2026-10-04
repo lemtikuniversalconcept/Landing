@@ -21,6 +21,9 @@ const SOLUTION_LABELS: Record<string, string> = {
   hospitality: 'Hotels & Hospitality',
   corporate: 'Corporate Offices',
   government: 'Government',
+  'critical-infrastructure': 'Critical Infrastructure',
+  retail: 'Retail & Commercial',
+  industrial: 'Industrial & Manufacturing',
 }
 
 export default async function ContactPage({

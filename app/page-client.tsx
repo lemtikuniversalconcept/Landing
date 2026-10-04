@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useABVariant, trackABConversion } from '@/lib/ab-test'
 import {
   Radio,
   MessageCircle,
@@ -42,7 +43,18 @@ const itemVariants = {
   },
 }
 
+// Headline is the only variable under test — CTA copy stays fixed so a
+// result can be attributed to the headline alone, not a confound of both.
+const HEADLINE_VARIANTS = ['os-for-african-security', 'replace-whatsapp'] as const
+const HEADLINE_COPY: Record<(typeof HEADLINE_VARIANTS)[number], { h1: string; cta: string }> = {
+  'os-for-african-security': { h1: 'The Operating System for African Security', cta: 'Request a Demo' },
+  'replace-whatsapp': { h1: 'Stop Running Security on WhatsApp Groups', cta: 'Request a Demo' },
+}
+
 const Hero = () => {
+  const variant = useABVariant('homepage_headline', HEADLINE_VARIANTS) as (typeof HEADLINE_VARIANTS)[number]
+  const copy = HEADLINE_COPY[variant]
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div
@@ -96,7 +108,7 @@ const Hero = () => {
             variants={itemVariants}
             className="text-5xl md:text-7xl font-bold text-white mb-6 text-balance"
           >
-            The Operating System for African Security
+            {copy.h1}
           </motion.h1>
 
           <motion.p
@@ -119,9 +131,10 @@ const Hero = () => {
           >
             <Link
               href="/contact"
+              onClick={() => trackABConversion('homepage_headline', variant, 'hero_cta_click')}
               className="px-8 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition-colors"
             >
-              Request a Demo
+              {copy.cta}
             </Link>
             <a
               href="#how-it-works"

@@ -48,3 +48,36 @@ export async function sendContactNotification(data: ContactNotification) {
     throw new Error(`Resend send failed: ${error.message}`)
   }
 }
+
+// Fails soft, same as the internal notification — the submission is already
+// saved by the time this runs, so a failed confirmation email never blocks
+// the form from succeeding for the visitor.
+export async function sendContactConfirmation(data: { name: string; email: string }) {
+  const apiKey = process.env.RESEND_API_KEY
+
+  if (!apiKey) {
+    console.warn('[resend] RESEND_API_KEY not set — skipping confirmation email')
+    return
+  }
+
+  const resend = new Resend(apiKey)
+
+  const { error } = await resend.emails.send({
+    from: 'Lemtik Security <noreply@lemtik.com.ng>',
+    to: data.email,
+    subject: "We've received your message",
+    text: [
+      `Hi ${data.name},`,
+      '',
+      "Thanks for reaching out to Lemtik Security — we've received your message and someone from our team will get back to you shortly.",
+      '',
+      'If anything is urgent, you can also reach us directly at info@lemtik.com.ng or +234 916 765 6667.',
+      '',
+      '— The Lemtik Team',
+    ].join('\n'),
+  })
+
+  if (error) {
+    throw new Error(`Resend send failed: ${error.message}`)
+  }
+}

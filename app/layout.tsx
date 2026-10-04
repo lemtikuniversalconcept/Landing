@@ -5,6 +5,8 @@ import { NavigationHeader } from '@/components/navigation-header'
 import { Footer } from '@/components/footer'
 import { FundingBanner } from '@/components/funding-banner'
 import { FundingPopup } from '@/components/funding-popup'
+import { WhatsappButton } from '@/components/whatsapp-button'
+import { StickyDemoBar } from '@/components/sticky-demo-bar'
 import { siteUrl, siteName } from '@/lib/seo'
 import { organizationSchema, websiteSchema } from '@/lib/schema'
 import { JsonLd } from '@/components/json-ld'
@@ -59,7 +61,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} bg-background`}>
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased pb-16 md:pb-0">
         <JsonLd data={organizationSchema()} />
         <JsonLd data={websiteSchema()} />
         <FundingBanner />
@@ -67,6 +69,8 @@ export default function RootLayout({
         <NavigationHeader />
         {children}
         <Footer />
+        <WhatsappButton />
+        <StickyDemoBar />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
