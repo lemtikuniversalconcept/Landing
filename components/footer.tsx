@@ -7,9 +7,22 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
           <div>
             <h3 className="font-bold text-white mb-4">Lemtik Security</h3>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-muted-foreground text-sm mb-4">
               Africa&apos;s first civilian-grade command and control platform for security teams.
             </p>
+            <ul className="space-y-1.5 text-muted-foreground text-sm">
+              <li>
+                <a href="mailto:info@lemtik.com.ng" className="hover:text-primary transition-colors">
+                  info@lemtik.com.ng
+                </a>
+              </li>
+              <li>
+                <a href="tel:+2349167656667" className="hover:text-primary transition-colors">
+                  +234 916 765 6667
+                </a>
+              </li>
+              <li>Lagos, Nigeria</li>
+            </ul>
           </div>
           <div>
             <h4 className="font-semibold text-white mb-4">Product</h4>
