@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { Rocket, X } from 'lucide-react'
 
 const DISMISS_KEY = 'lemtik_funding_banner_dismissed_v1'
@@ -25,12 +26,9 @@ export function FundingBanner() {
     <div className="relative z-[60] flex items-center justify-center gap-2 bg-primary px-4 py-2 text-center text-xs font-medium text-primary-foreground sm:text-sm">
       <Rocket className="h-3.5 w-3.5 shrink-0" />
       <span className="truncate">We&apos;re raising our pre-seed round to fund our first pilot.</span>
-      <a
-        href="mailto:amisuhikmot@gmail.com?subject=Lemtik%20Security%20—%20Investor%20Interest"
-        className="shrink-0 underline underline-offset-2 hover:no-underline"
-      >
+      <Link href="/investors" className="shrink-0 underline underline-offset-2 hover:no-underline">
         Get in touch
-      </a>
+      </Link>
       <button
         onClick={dismiss}
         aria-label="Dismiss"

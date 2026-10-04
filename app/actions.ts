@@ -1,7 +1,12 @@
 'use server'
 
 import { getSupabaseClient } from '@/lib/supabase'
-import { sendContactNotification, sendContactConfirmation } from '@/lib/resend'
+import {
+  sendContactNotification,
+  sendContactConfirmation,
+  sendInvestorNotification,
+  sendInvestorConfirmation,
+} from '@/lib/resend'
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -53,6 +58,56 @@ export async function submitContactForm(_prevState: FormState, formData: FormDat
     return { status: 'success' }
   } catch (err) {
     console.error('[contact] submission failed', err)
+    return {
+      status: 'error',
+      message: 'Something went wrong on our end. Please try again, or email us directly.',
+    }
+  }
+}
+
+export async function submitInvestorForm(_prevState: FormState, formData: FormData): Promise<FormState> {
+  if (formData.get('company_website')) {
+    return { status: 'success' }
+  }
+
+  const name = String(formData.get('name') || '').trim()
+  const email = String(formData.get('email') || '').trim()
+  const phone = String(formData.get('phone') || '').trim()
+  const investorType = String(formData.get('investor_type') || '').trim()
+  const checkSize = String(formData.get('check_size') || '').trim()
+  const stageInterest = String(formData.get('stage_interest') || '').trim()
+  const notes = String(formData.get('notes') || '').trim()
+
+  if (!name || !email || !phone || !investorType || !checkSize || !stageInterest) {
+    return { status: 'error', message: 'Please fill in every field.' }
+  }
+  if (!emailPattern.test(email)) {
+    return { status: 'error', message: 'Please enter a valid email address.' }
+  }
+
+  try {
+    const supabase = getSupabaseClient()
+    const { error } = await supabase.from('investor_inquiries').insert({
+      name,
+      email,
+      phone,
+      investor_type: investorType,
+      check_size: checkSize,
+      stage_interest: stageInterest,
+      notes: notes || null,
+    })
+    if (error) throw error
+
+    await sendInvestorNotification({ name, email, phone, investorType, checkSize, stageInterest, notes }).catch((err) => {
+      console.error('[investor] notification email failed', err)
+    })
+    await sendInvestorConfirmation({ name, email }).catch((err) => {
+      console.error('[investor] confirmation email failed', err)
+    })
+
+    return { status: 'success' }
+  } catch (err) {
+    console.error('[investor] submission failed', err)
     return {
       status: 'error',
       message: 'Something went wrong on our end. Please try again, or email us directly.',

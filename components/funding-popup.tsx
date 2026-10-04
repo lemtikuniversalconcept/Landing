@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Rocket, X } from 'lucide-react'
 
@@ -71,12 +72,12 @@ export function FundingPopup() {
               >
                 Maybe later
               </button>
-              <a
-                href="mailto:amisuhikmot@gmail.com?subject=Lemtik%20Security%20—%20Investor%20Interest"
+              <Link
+                href="/investors"
                 className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
               >
                 Get in touch
-              </a>
+              </Link>
             </div>
           </motion.div>
         </motion.div>

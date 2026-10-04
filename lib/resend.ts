@@ -49,6 +49,84 @@ export async function sendContactNotification(data: ContactNotification) {
   }
 }
 
+type InvestorNotification = {
+  name: string
+  email: string
+  phone: string
+  investorType: string
+  checkSize: string
+  stageInterest: string
+  notes: string
+}
+
+// Same fail-soft pattern as the contact form notification.
+export async function sendInvestorNotification(data: InvestorNotification) {
+  const apiKey = process.env.RESEND_API_KEY
+  const notifyEmail = process.env.CONTACT_NOTIFY_EMAIL
+
+  if (!apiKey || !notifyEmail) {
+    console.warn('[resend] RESEND_API_KEY / CONTACT_NOTIFY_EMAIL not set — skipping notification email')
+    return
+  }
+
+  const resend = new Resend(apiKey)
+
+  const { error } = await resend.emails.send({
+    from: 'Lemtik Security <noreply@lemtik.com.ng>',
+    to: notifyEmail,
+    replyTo: data.email,
+    subject: `New investor inquiry — ${data.name}`,
+    text: [
+      `Name: ${data.name}`,
+      `Email: ${data.email}`,
+      `Phone: ${data.phone}`,
+      `Investor type: ${data.investorType}`,
+      `Typical check size: ${data.checkSize}`,
+      `Interested in: ${data.stageInterest}`,
+      data.notes ? `\nNotes:\n${data.notes}` : null,
+    ]
+      .filter(Boolean)
+      .join('\n'),
+  })
+
+  if (error) {
+    throw new Error(`Resend send failed: ${error.message}`)
+  }
+}
+
+// Fails soft, same as the internal notification — the submission is already
+// saved by the time this runs, so a failed confirmation email never blocks
+// the form from succeeding for the visitor.
+export async function sendInvestorConfirmation(data: { name: string; email: string }) {
+  const apiKey = process.env.RESEND_API_KEY
+
+  if (!apiKey) {
+    console.warn('[resend] RESEND_API_KEY not set — skipping confirmation email')
+    return
+  }
+
+  const resend = new Resend(apiKey)
+
+  const { error } = await resend.emails.send({
+    from: 'Lemtik Security <noreply@lemtik.com.ng>',
+    to: data.email,
+    subject: 'Thanks for your interest in Lemtik Security',
+    text: [
+      `Hi ${data.name},`,
+      '',
+      "Thanks for reaching out about our pre-seed round — we've received your details and someone from our team will follow up directly.",
+      '',
+      'If anything is urgent, you can also reach us at info@lemtik.com.ng or +234 916 765 6667.',
+      '',
+      '— The Lemtik Team',
+    ].join('\n'),
+  })
+
+  if (error) {
+    throw new Error(`Resend send failed: ${error.message}`)
+  }
+}
+
 // Fails soft, same as the internal notification — the submission is already
 // saved by the time this runs, so a failed confirmation email never blocks
 // the form from succeeding for the visitor.
