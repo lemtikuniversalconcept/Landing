@@ -1,12 +1,19 @@
 'use client'
 
-import { useActionState } from 'react'
+import { useActionState, useEffect } from 'react'
+import { track } from '@vercel/analytics'
 import { submitContactForm, type FormState } from '@/app/actions'
 
 const initialState: FormState = { status: 'idle' }
 
 export function ContactForm({ defaultSolution = '' }: { defaultSolution?: string }) {
   const [state, formAction, pending] = useActionState(submitContactForm, initialState)
+
+  useEffect(() => {
+    if (state.status === 'success') {
+      track('demo_request_submitted', { solution: defaultSolution || 'general' })
+    }
+  }, [state.status, defaultSolution])
 
   if (state.status === 'success') {
     return (
