@@ -4,12 +4,22 @@ import { JsonLd } from '@/components/json-ld'
 import { Breadcrumbs } from '@/components/breadcrumbs'
 import { NewsroomPageClient } from './page-client'
 
-export const metadata = buildMetadata({
+const baseMetadata = buildMetadata({
   title: 'Newsroom',
   description:
     'Product updates, milestones, and announcements from Lemtik Security.',
   path: '/newsroom',
 })
+
+export const metadata = {
+  ...baseMetadata,
+  alternates: {
+    ...baseMetadata.alternates,
+    types: {
+      'application/rss+xml': '/newsroom/rss.xml',
+    },
+  },
+}
 
 const breadcrumbItems = [
   { name: 'Home', path: '/' },

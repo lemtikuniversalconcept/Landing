@@ -146,12 +146,20 @@ export function NewsroomPageClient() {
 
       {/* Articles Grid */}
       <section className="mx-auto max-w-6xl px-6 py-24 border-t border-border">
-        <motion.h2
-          {...fadeInUp}
-          className="text-3xl font-bold mb-16"
-        >
-          Latest Articles
-        </motion.h2>
+        <div className="flex items-center justify-between mb-16">
+          <motion.h2
+            {...fadeInUp}
+            className="text-3xl font-bold"
+          >
+            Latest Articles
+          </motion.h2>
+          <a
+            href="/newsroom/rss.xml"
+            className="text-sm text-muted-foreground hover:text-primary transition-colors"
+          >
+            RSS Feed
+          </a>
+        </div>
 
         {articles.length === 0 && (
           <motion.div {...fadeInUp} className="rounded-lg border border-border bg-muted/30 p-12 text-center">

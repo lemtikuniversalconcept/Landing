@@ -76,8 +76,13 @@ export function NavigationHeader() {
               className="relative group"
               onMouseEnter={() => setOpenMegaMenu(item.label)}
               onMouseLeave={() => setOpenMegaMenu(null)}
+              onFocus={() => setOpenMegaMenu(item.label)}
+              onBlur={() => setOpenMegaMenu(null)}
             >
-              <button className="flex items-center gap-1 px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded group-hover:bg-muted/50">
+              <button
+                aria-expanded={item.submenu ? openMegaMenu === item.label : undefined}
+                className="flex items-center gap-1 px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded group-hover:bg-muted/50"
+              >
                 {item.label}
                 {item.submenu && <ChevronDown size={16} className="opacity-60" />}
               </button>

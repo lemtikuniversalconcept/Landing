@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useABVariant, trackABConversion } from '@/lib/ab-test'
+import { SubscribeForm } from '@/components/subscribe-form'
 import {
   Radio,
   MessageCircle,
@@ -1011,6 +1012,22 @@ const FinalCTA = () => {
   )
 }
 
+const Newsletter = () => {
+  return (
+    <section className="py-16 px-4 bg-navy-900 border-t border-border">
+      <div className="max-w-2xl mx-auto text-center">
+        <h2 className="text-2xl font-bold text-white mb-3">Not ready for a demo yet?</h2>
+        <p className="text-gray-400 mb-6">
+          Get occasional product updates and new guides — no sales calls, unsubscribe anytime.
+        </p>
+        <div className="max-w-md mx-auto">
+          <SubscribeForm source="homepage" />
+        </div>
+      </div>
+    </section>
+  )
+}
+
 const DataTransparency = () => {
   return (
     <section className="py-16 px-4 bg-navy-900">
@@ -1065,6 +1082,7 @@ export function HomePageClient() {
       <EngineeringPhilosophy />
       <Mission />
       <FinalCTA />
+      <Newsletter />
       <DataTransparency />
     </main>
   )

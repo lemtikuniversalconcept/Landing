@@ -38,7 +38,9 @@ export function Footer() {
             <h4 className="font-semibold text-white mb-4">Resources</h4>
             <ul className="space-y-2 text-muted-foreground text-sm">
               <li><Link href="/newsroom" className="hover:text-primary transition-colors">Newsroom</Link></li>
+              <li><Link href="/newsroom/rss.xml" className="hover:text-primary transition-colors">RSS Feed</Link></li>
               <li><Link href="/guides" className="hover:text-primary transition-colors">Guides & Checklists</Link></li>
+              <li><Link href="/why-switch-from-whatsapp" className="hover:text-primary transition-colors">Why Switch From WhatsApp</Link></li>
               <li><Link href="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
               <li><Link href="/glossary" className="hover:text-primary transition-colors">Glossary</Link></li>
             </ul>
@@ -48,6 +50,8 @@ export function Footer() {
             <ul className="space-y-2 text-muted-foreground text-sm">
               <li><Link href="/about" className="hover:text-primary transition-colors">About</Link></li>
               <li><Link href="/mission" className="hover:text-primary transition-colors">Mission</Link></li>
+              <li><Link href="/careers" className="hover:text-primary transition-colors">Careers</Link></li>
+              <li><Link href="/status" className="hover:text-primary transition-colors">Status</Link></li>
               <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
             </ul>
           </div>

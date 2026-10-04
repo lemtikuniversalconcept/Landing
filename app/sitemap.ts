@@ -29,6 +29,9 @@ const staticRoutes = [
   { path: '/faq', priority: 0.6, changeFrequency: 'monthly' as const },
   { path: '/glossary', priority: 0.6, changeFrequency: 'monthly' as const },
   { path: '/contact', priority: 0.8, changeFrequency: 'yearly' as const },
+  { path: '/why-switch-from-whatsapp', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/careers', priority: 0.4, changeFrequency: 'monthly' as const },
+  { path: '/status', priority: 0.3, changeFrequency: 'daily' as const },
   { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' as const },
   { path: '/terms', priority: 0.3, changeFrequency: 'yearly' as const },
 ]

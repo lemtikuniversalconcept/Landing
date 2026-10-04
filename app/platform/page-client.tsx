@@ -364,6 +364,7 @@ export function PlatformPageClient() {
               >
                 <button
                   onClick={() => setExpandedModule(expandedModule === module.id ? null : module.id)}
+                  aria-expanded={expandedModule === module.id}
                   className="w-full px-6 py-5 flex items-center justify-between hover:bg-muted/50 transition-colors"
                 >
                   <div className="text-left">

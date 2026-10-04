@@ -1,0 +1,4 @@
+Contact: mailto:security@lemtik.com.ng
+Expires: 2027-10-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://lemtik.com.ng/.well-known/security.txt
