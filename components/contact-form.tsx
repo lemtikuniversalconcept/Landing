@@ -2,6 +2,7 @@
 
 import { useActionState, useEffect } from 'react'
 import { track } from '@vercel/analytics'
+import { trackGaEvent } from '@/lib/gtag'
 import { submitContactForm, type FormState } from '@/app/actions'
 
 const initialState: FormState = { status: 'idle' }
@@ -12,6 +13,7 @@ export function ContactForm({ defaultSolution = '' }: { defaultSolution?: string
   useEffect(() => {
     if (state.status === 'success') {
       track('demo_request_submitted', { solution: defaultSolution || 'general' })
+      trackGaEvent('demo_request_submitted', { solution: defaultSolution || 'general' })
     }
   }, [state.status, defaultSolution])
 

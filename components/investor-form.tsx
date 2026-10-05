@@ -2,6 +2,7 @@
 
 import { useActionState, useEffect } from 'react'
 import { track } from '@vercel/analytics'
+import { trackGaEvent } from '@/lib/gtag'
 import { submitInvestorForm, type FormState } from '@/app/actions'
 
 const initialState: FormState = { status: 'idle' }
@@ -39,6 +40,7 @@ export function InvestorForm() {
   useEffect(() => {
     if (state.status === 'success') {
       track('investor_form_submitted')
+      trackGaEvent('investor_form_submitted')
     }
   }, [state.status])
 
