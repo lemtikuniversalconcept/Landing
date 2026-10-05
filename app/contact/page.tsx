@@ -3,6 +3,7 @@ import { breadcrumbSchema } from '@/lib/schema'
 import { JsonLd } from '@/components/json-ld'
 import { Breadcrumbs } from '@/components/breadcrumbs'
 import { ContactForm } from '@/components/contact-form'
+import { TawkWidget } from '@/components/tawk-widget'
 
 export const metadata = buildMetadata({
   title: 'Contact',
@@ -36,6 +37,7 @@ export default async function ContactPage({
 
   return (
     <main className="bg-background min-h-screen">
+      <TawkWidget />
       <JsonLd data={breadcrumbSchema(breadcrumbItems)} />
       <Breadcrumbs items={breadcrumbItems} />
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">

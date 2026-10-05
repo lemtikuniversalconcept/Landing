@@ -27,13 +27,17 @@ const nextConfig = {
     // script/connect targets are needed (fonts are self-hosted via
     // next/font/google, Supabase only runs server-side, Vercel Analytics
     // is served same-origin at /_vercel/insights/).
+    // Tawk.to live chat (on /contact and /pricing) needs its own script,
+    // websocket, frame, and image/font sources added on top of the
+    // otherwise-tight baseline above.
     const csp = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline'",
-      "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data:",
-      "font-src 'self' data:",
-      "connect-src 'self'",
+      "script-src 'self' 'unsafe-inline' https://embed.tawk.to https://*.tawk.to",
+      "style-src 'self' 'unsafe-inline' https://embed.tawk.to https://*.tawk.to",
+      "img-src 'self' data: https://*.tawk.to",
+      "font-src 'self' data: https://*.tawk.to",
+      "connect-src 'self' https://*.tawk.to wss://*.tawk.to",
+      "frame-src https://*.tawk.to",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",

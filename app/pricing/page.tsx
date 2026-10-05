@@ -4,6 +4,7 @@ import { buildMetadata } from '@/lib/seo'
 import { breadcrumbSchema } from '@/lib/schema'
 import { JsonLd } from '@/components/json-ld'
 import { Breadcrumbs } from '@/components/breadcrumbs'
+import { TawkWidget } from '@/components/tawk-widget'
 
 export const metadata = buildMetadata({
   title: 'Pricing',
@@ -62,6 +63,7 @@ const tiers = [
 export default function PricingPage() {
   return (
     <main className="bg-background min-h-screen">
+      <TawkWidget />
       <JsonLd data={breadcrumbSchema(breadcrumbItems)} />
       <Breadcrumbs items={breadcrumbItems} />
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-8 text-center">
