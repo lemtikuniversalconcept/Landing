@@ -29,6 +29,7 @@ export function NavigationHeader() {
     { label: 'Critical Infrastructure', href: '/solutions/critical-infrastructure' },
     { label: 'Retail & Commercial', href: '/solutions/retail' },
     { label: 'Industrial & Manufacturing', href: '/solutions/industrial' },
+    { label: 'Protected Movement', href: '/solutions/protected-movement' },
     { label: 'View All Solutions', href: '/solutions' },
   ]
 

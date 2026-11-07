@@ -62,6 +62,15 @@ export function SolutionsHubClient() {
       href: '/solutions/industrial',
       color: 'from-slate-600 to-cyan-700',
     },
+    {
+      title: 'Protected Movement',
+      shortDescription: 'Student safety for institutions, and principal tracking for executive protection teams — people on the move, not just fixed sites.',
+      fullDescription: 'Protection that moves with you.',
+      image: undefined,
+      href: '/solutions/protected-movement',
+      color: 'from-rose-600 to-slate-700',
+      badge: 'In Development',
+    },
   ]
 
   const containerVariants = {
@@ -150,6 +159,13 @@ export function SolutionsHubClient() {
 
                       {/* Dark Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+
+                      {/* Badge */}
+                      {solution.badge && (
+                        <span className="absolute top-4 right-4 rounded-full bg-background/90 border border-primary/40 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
+                          {solution.badge}
+                        </span>
+                      )}
 
                       {/* Content */}
                       <div className="absolute inset-0 flex flex-col justify-end p-6">

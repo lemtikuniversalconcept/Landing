@@ -127,6 +127,78 @@ export async function sendInvestorConfirmation(data: { name: string; email: stri
   }
 }
 
+type ProtectedMovementNotification = {
+  name: string
+  email: string
+  interestedAs: string
+  notes: string
+}
+
+// Same fail-soft pattern as the other notifications.
+export async function sendProtectedMovementNotification(data: ProtectedMovementNotification) {
+  const apiKey = process.env.RESEND_API_KEY
+  const notifyEmail = process.env.CONTACT_NOTIFY_EMAIL
+
+  if (!apiKey || !notifyEmail) {
+    console.warn('[resend] RESEND_API_KEY / CONTACT_NOTIFY_EMAIL not set — skipping notification email')
+    return
+  }
+
+  const resend = new Resend(apiKey)
+
+  const { error } = await resend.emails.send({
+    from: 'Lemtik Security <noreply@lemtik.com.ng>',
+    to: notifyEmail,
+    replyTo: data.email,
+    subject: `New Protected Movement interest — ${data.name}`,
+    text: [
+      `Name: ${data.name}`,
+      `Email: ${data.email}`,
+      `Interested as: ${data.interestedAs}`,
+      data.notes ? `\nNotes:\n${data.notes}` : null,
+    ]
+      .filter(Boolean)
+      .join('\n'),
+  })
+
+  if (error) {
+    throw new Error(`Resend send failed: ${error.message}`)
+  }
+}
+
+// Fails soft, same as the internal notification — the submission is already
+// saved by the time this runs, so a failed confirmation email never blocks
+// the form from succeeding for the visitor.
+export async function sendProtectedMovementConfirmation(data: { name: string; email: string }) {
+  const apiKey = process.env.RESEND_API_KEY
+
+  if (!apiKey) {
+    console.warn('[resend] RESEND_API_KEY not set — skipping confirmation email')
+    return
+  }
+
+  const resend = new Resend(apiKey)
+
+  const { error } = await resend.emails.send({
+    from: 'Lemtik Security <noreply@lemtik.com.ng>',
+    to: data.email,
+    subject: "You're on the list — Protected Movement",
+    text: [
+      `Hi ${data.name},`,
+      '',
+      "Thanks for your interest in Protected Movement — it's still in development, and we've added you to the early access list. We'll reach out as soon as there's something real to show.",
+      '',
+      'If anything is urgent in the meantime, reach us at info@lemtik.com.ng or +234 916 765 6667.',
+      '',
+      '— The Lemtik Team',
+    ].join('\n'),
+  })
+
+  if (error) {
+    throw new Error(`Resend send failed: ${error.message}`)
+  }
+}
+
 // Fails soft, same as the internal notification — the submission is already
 // saved by the time this runs, so a failed confirmation email never blocks
 // the form from succeeding for the visitor.

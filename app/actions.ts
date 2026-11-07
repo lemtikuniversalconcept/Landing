@@ -6,6 +6,8 @@ import {
   sendContactConfirmation,
   sendInvestorNotification,
   sendInvestorConfirmation,
+  sendProtectedMovementNotification,
+  sendProtectedMovementConfirmation,
 } from '@/lib/resend'
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -108,6 +110,50 @@ export async function submitInvestorForm(_prevState: FormState, formData: FormDa
     return { status: 'success' }
   } catch (err) {
     console.error('[investor] submission failed', err)
+    return {
+      status: 'error',
+      message: 'Something went wrong on our end. Please try again, or email us directly.',
+    }
+  }
+}
+
+export async function submitProtectedMovementInterest(_prevState: FormState, formData: FormData): Promise<FormState> {
+  if (formData.get('company_website')) {
+    return { status: 'success' }
+  }
+
+  const name = String(formData.get('name') || '').trim()
+  const email = String(formData.get('email') || '').trim()
+  const interestedAs = String(formData.get('interested_as') || '').trim()
+  const notes = String(formData.get('notes') || '').trim()
+
+  if (!name || !email || !interestedAs) {
+    return { status: 'error', message: 'Please fill in every field.' }
+  }
+  if (!emailPattern.test(email)) {
+    return { status: 'error', message: 'Please enter a valid email address.' }
+  }
+
+  try {
+    const supabase = getSupabaseClient()
+    const { error } = await supabase.from('protected_movement_interest').insert({
+      name,
+      email,
+      interested_as: interestedAs,
+      notes: notes || null,
+    })
+    if (error) throw error
+
+    await sendProtectedMovementNotification({ name, email, interestedAs, notes }).catch((err) => {
+      console.error('[protected-movement] notification email failed', err)
+    })
+    await sendProtectedMovementConfirmation({ name, email }).catch((err) => {
+      console.error('[protected-movement] confirmation email failed', err)
+    })
+
+    return { status: 'success' }
+  } catch (err) {
+    console.error('[protected-movement] submission failed', err)
     return {
       status: 'error',
       message: 'Something went wrong on our end. Please try again, or email us directly.',
