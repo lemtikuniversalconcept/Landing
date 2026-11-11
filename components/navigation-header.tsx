@@ -30,6 +30,7 @@ export function NavigationHeader() {
     { label: 'Retail & Commercial', href: '/solutions/retail' },
     { label: 'Industrial & Manufacturing', href: '/solutions/industrial' },
     { label: 'Protected Movement', href: '/solutions/protected-movement' },
+    { label: 'Maritime & Ports', href: '/solutions/maritime' },
     { label: 'View All Solutions', href: '/solutions' },
   ]
 

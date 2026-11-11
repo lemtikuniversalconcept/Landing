@@ -64,12 +64,21 @@ export function SolutionsHubClient() {
     },
     {
       title: 'Protected Movement',
-      shortDescription: 'Student safety for institutions, and principal tracking for executive protection teams — people on the move, not just fixed sites.',
+      shortDescription: 'Student safety for institutions, and principal tracking for executive protection teams. People on the move, not just fixed sites.',
       fullDescription: 'Protection that moves with you.',
       image: undefined,
       href: '/solutions/protected-movement',
       color: 'from-rose-600 to-slate-700',
-      badge: 'In Development',
+      badge: 'New',
+    },
+    {
+      title: 'Lemtik Maritime',
+      shortDescription: 'Small boats with no AIS, port facility ISPS compliance, cargo custody and search and rescue, on the same platform as your land security.',
+      fullDescription: 'What ship-tracking systems don\'t see.',
+      image: undefined,
+      href: '/solutions/maritime',
+      color: 'from-sky-600 to-slate-800',
+      badge: 'New',
     },
   ]
 

@@ -47,10 +47,10 @@ export function ProtectedMovementForm() {
   if (state.status === 'success') {
     return (
       <div className="rounded-lg border border-primary/30 bg-primary/5 p-8 text-center">
-        <h3 className="text-xl font-bold mb-2">You're on the list</h3>
+        <h3 className="text-xl font-bold mb-2">Thanks, we've got it</h3>
         <p className="text-muted-foreground">
-          This is still in development — we'll reach out as soon as there's something real to show.
-          Check your email for a confirmation.
+          We'll be in touch to set up a walkthrough on the live system. Check your email for a
+          confirmation.
         </p>
       </div>
     )
@@ -129,7 +129,7 @@ export function ProtectedMovementForm() {
         disabled={pending}
         className="w-full sm:w-auto px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:opacity-90 transition-opacity disabled:opacity-60"
       >
-        {pending ? 'Sending…' : 'Join the Early Access List'}
+        {pending ? 'Sending…' : 'Request a Walkthrough'}
       </button>
     </form>
   )

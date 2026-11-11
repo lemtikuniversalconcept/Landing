@@ -182,11 +182,11 @@ export async function sendProtectedMovementConfirmation(data: { name: string; em
   const { error } = await resend.emails.send({
     from: 'Lemtik Security <noreply@lemtik.com.ng>',
     to: data.email,
-    subject: "You're on the list — Protected Movement",
+    subject: "Thanks for your interest in Protected Movement",
     text: [
       `Hi ${data.name},`,
       '',
-      "Thanks for your interest in Protected Movement — it's still in development, and we've added you to the early access list. We'll reach out as soon as there's something real to show.",
+      "Thanks for your interest in Protected Movement. It's live on the Lemtik platform, and we'll be in touch to set up a walkthrough on the real system.",
       '',
       'If anything is urgent in the meantime, reach us at info@lemtik.com.ng or +234 916 765 6667.',
       '',
